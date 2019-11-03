@@ -1,0 +1,47 @@
+.article {
+  background: #c6c6c6;
+  margin: 1rem 0;
+  border-radius: 10px;
+  padding: 0 1rem;
+
+  .article-image {
+    height: 200px;
+    background-size: contain;
+  }
+
+  .article-heading {
+    padding: 1rem 0 1rem 0;
+  }
+
+  .article-form {
+    padding: 1rem;
+  }
+
+  .article-tags {
+    padding: 1rem;
+  }
+
+  .article-form-element {
+    width: 100%;
+  }
+
+  .form-input-row {
+    margin: 1rem 0;
+  }
+
+  .bx--toggle__switch {
+    width: 10rem;
+  }
+
+  .bx--fieldset {
+    margin-bottom: 0;
+  }
+
+  .signup-button-wrapper {
+    text-align: right;
+
+    .signup-button {
+      padding: 0.1rem 1rem 0.1rem 1rem;
+    }
+  }
+}
