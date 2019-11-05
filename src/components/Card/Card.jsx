@@ -7,27 +7,31 @@ import "./Card.scss";
 
 function Card(props) {
   return (
-    <Tile className="card">
-      <div className="bx--row">
-        <div className="bx--col-sm-1 bx--col-lg-1">
-          <img src={"https://my12.digitalexperience.ibm.com/" + props.thumbnail} alt="" width="90px" />
+    <Link to={`/article/${props.id}`}>
+      <Tile className="card">
+        <div className="bx--row">
+          <div className="bx--col-sm-1 bx--col-lg-1 card-image-col">
+            <div
+              className="card-image"
+              style={{
+                background: `url(${props.thumbnail}) no-repeat center center`,
+                backgroundSize: "cover"
+              }}
+            ></div>
+          </div>
+
+          <div className="bx--col-sm-3 bx--col-lg-11">
+            <h4>{props.title}</h4>
+
+            <p dangerouslySetInnerHTML={{ __html: props.text }} className="card-text"></p>
+
+            <div className="card-tags-wrapper">
+              {props.tags.map((tag, index) => (index <= 1 ? <TagComponent title={tag} key={index} /> : ""))}
+            </div>
+          </div>
         </div>
-
-        <div className="bx--col-sm-3 bx--col-lg-11">
-          <Link to={`/article/${props.id}`}>
-            <h3>{props.title}</h3>
-          </Link>
-
-          <p dangerouslySetInnerHTML={{ __html: props.text.substr(0, 60) + "..." }}></p>
-
-          {props.tags.map((tag, index) => {
-            if (index <= 1) {
-              return <TagComponent title={tag} />;
-            }
-          })}
-        </div>
-      </div>
-    </Tile>
+      </Tile>
+    </Link>
   );
 }
 

@@ -1,11 +1,14 @@
 import React from "react";
 import { Tag } from "carbon-components-react";
-import './Tag.scss';
+import { Link } from "react-router-dom";
+import "./Tag.scss";
 
 export default function TagComponent(props) {
   return (
-    <Tag className="tag" role="listitem" type="warm-gray">
-      {props.title}
-    </Tag>
+    <Link to={`/tag/${props.title}`}>
+      <Tag className="tag" role="listitem" type="blue">
+        {props.title}
+      </Tag>
+    </Link>
   );
 }

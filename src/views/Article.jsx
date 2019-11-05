@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Tile, Form, FormGroup, TextInput, Button, Toggle } from "carbon-components-react";
-import Tag from "../components/Tag/Tag";
+import TagComponent from "../components/Tag/Tag";
 import "./Article.scss";
 import { getArticle } from "../services/article";
 
 function Article() {
-  const articleId = window.location.pathname.replace("/article/", "");
   const [article, setData] = useState({ article: {} });
+  const [loading, setLoadingState] = useState({ loading: false });
 
   useEffect(() => {
     const fetchData = async () => {
+      const articleId = window.location.pathname.replace("/article/", "");
+      setLoadingState(true);
       const result = await getArticle(articleId);
-      const { data } = result;
-      console.log(data.elements);
-      setData(data);
+      setData(result.data);
+      console.log(result.data);
+      setLoadingState(false);
     };
     fetchData();
-  }, {});
+  }, []);
 
-  return (
+  return loading ? (
+    <p>Loading...</p>
+  ) : (
     <div className="bx--grid bx--grid--full-width">
       <Tile className="article">
-        <div className="bx--row article-image" style={{ background: "url(http://placehold.jp/465x200.png)" }}></div>
+        <div
+          className="bx--row article-image"
+          style={{
+            background: `url(https://my12.digitalexperience.ibm.com/${article.elements.articleImage.value.image.url}) no-repeat center center`,
+            backgroundSize: "cover"
+          }}
+        ></div>
 
         <div className="bx--row article-heading">
           <div className="bx--col-sm-3 bx--col-lg-3">
@@ -31,9 +41,7 @@ function Article() {
 
         <div className="bx--row article-text">
           <div className="bx--col-sm-12 bx--col-lg-12">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatum alias labore esse magni cumque id amet sapiente
-            possimus, deleniti enim. Ad explicabo corrupti asperiores voluptas ratione, architecto aliquam beatae?
-            {/* <p dangerouslySetInnerHTML={{ __html: article.elements.articleText.value }}></p> */}
+            <p dangerouslySetInnerHTML={{ __html: article.elements.articleText.value }}></p>
           </div>
         </div>
         <div className="bx--row article-form">
@@ -83,7 +91,7 @@ function Article() {
                 </div>
                 <div className="bx--col-sm-2 signup-button-wrapper">
                   <Button className="signup-button" kind="primary" tabIndex={0} type="submit">
-                    SIGN ME UP
+                    SIGN UP
                   </Button>
                 </div>
               </div>
@@ -92,9 +100,7 @@ function Article() {
         </div>
 
         <div className="bx--row article-tags">
-          <Tag />
-          <Tag />
-          <Tag />
+        {article.tags.map((tag, index) => (index <= 1 ? <TagComponent title={tag} key={index} /> : ""))}
         </div>
       </Tile>
     </div>

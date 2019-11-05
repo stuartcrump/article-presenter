@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Headline from "../components/Headline/Headline";
 import Card from "../components/Card/Card";
-import "./Home.scss";
+import "./TagCategory.scss";
 import { getCategoryItems } from "../services/articles";
 import { ContentSwitcher, Switch as CarbonSwitch } from "carbon-components-react";
-import { Link, useHistory, useLocation } from "react-router-dom";
 
-function Home() {
+function TagCategory() {
   const [data, setData] = useState({ documents: [] });
   const [category, setCategory] = useState("Home");
   const [loading, setLoadingState] = useState({ loading: false });
 
   useEffect(() => {
+    const tag = unescape(window.location.pathname.replace("/tag/", ""));
+
     const fetchData = async () => {
       setLoadingState(true);
 
-      const result = await getCategoryItems(category);
+      const result = await getCategoryItems(tag, true);
       const { data } = result;
 
+      console.log(data);
       setData(data);
       setLoadingState(false);
     };
     fetchData();
   }, [category]);
-
-  // let history = useHistory();
 
   return (
     <div>
@@ -34,15 +34,7 @@ function Home() {
         }}
         selectedIndex={0}
       >
-        <CarbonSwitch
-          name="Home"
-          onClick={function() {
-            // history.replace("/");
-          }}
-          text="Home"
-          key={"Home"}
-        />
-
+        <CarbonSwitch name="Home" onClick={void 0} text="Home" key={"Home"} />
         <CarbonSwitch name="Category1" onClick={void 0} text="Category 1" key={"Cat1"} />
         <CarbonSwitch name="Category2" onClick={void 0} text="Category 2" key={"Cat2"} />
       </ContentSwitcher>
@@ -58,7 +50,9 @@ function Home() {
           ) : (
             data.documents &&
             data.documents.map((article, index) => {
-              const details = JSON.parse(article.document);
+
+
+              const details = article.document;
               return (
                 <div className="bx--col-md-12 bx--col-lg-12" key={index}>
                   <Card
@@ -78,4 +72,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default TagCategory;
