@@ -1,72 +1,85 @@
-import React, { useState, useEffect } from "react";
-import Headline from "../components/Headline/Headline";
-import Card from "../components/Card/Card";
-import "./TagCategory.scss";
-import { getCategoryItems } from "../services/articles";
-import { ContentSwitcher, Switch as CarbonSwitch } from "carbon-components-react";
+import React, { useState, useEffect } from 'react';
+import Headline from '../components/Headline/Headline';
+import Card from '../components/Card/Card';
+import './TagCategory.scss';
+import { ContentSwitcher, Switch as CarbonSwitch } from 'carbon-components-react';
+import _ from 'lodash';
+import { tenantURL } from '../constants';
+import axios from 'axios';
 
-function TagCategory() {
-  const [data, setData] = useState({ documents: [] });
-  const [category, setCategory] = useState("Home");
-  const [loading, setLoadingState] = useState({ loading: false });
+function TagCategory(props) {
+  const [data, setData] = useState({
+    numFound: 0,
+    documents: []
+  });
+  const [fetched, setFetched] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const tag = unescape(window.location.pathname.replace("/tag/", ""));
-
     const fetchData = async () => {
-      setLoadingState(true);
+      console.log(props.match.params.id);
+      const deliveryURL = `${tenantURL}delivery/v1/search`;
+      const queryURL = `${deliveryURL}?q=classification:content%20AND%20tags:"${props.match.params.id}"&fl=name&fl=classification&fl=tags&fl=document:[json]`;
 
-      const result = await getCategoryItems(tag, true);
-      const { data } = result;
-
-      console.log(data);
-      setData(data);
-      setLoadingState(false);
+      axios
+        .get(queryURL)
+        .then(res => {
+          setData(res.data);
+          setFetched(true);
+        })
+        .catch(err => {
+          setError(err.message);
+          setFetched(true);
+        });
     };
     fetchData();
-  }, [category]);
+  }, []);
 
+  let articles;
+  if (fetched) {
+    if (error) {
+      articles = <h1>{error}</h1>;
+    } else if (!data.numFound) {
+      articles = <h1>{'No article found'}</h1>;
+    } else {
+      articles = data.documents.map((article, index) => {
+        const { document } = article;
+        return (
+          <div className='bx--col-md-12 bx--col-lg-12' key={index}>
+            <Card
+              id={document.id}
+              title={document.name}
+              text={`${document.elements.articleText.value.substr(0, 150) + '...'}`}
+              tags={document.tags}
+              thumbnail={`https://my12.digitalexperience.ibm.com/${document.elements.thumbnail.value.leadImage.url}`}
+            />
+          </div>
+        );
+      });
+    }
+  } else {
+    articles = 'loading';
+  }
+  // console.log('render', props);
   return (
     <div>
       <ContentSwitcher
         onChange={function noRefCheck(e) {
-          setCategory(e.name);
+          // setCategory(e.name);
         }}
         selectedIndex={0}
       >
-        <CarbonSwitch name="Home" onClick={void 0} text="Home" key={"Home"} />
-        <CarbonSwitch name="Category1" onClick={void 0} text="Category 1" key={"Cat1"} />
-        <CarbonSwitch name="Category2" onClick={void 0} text="Category 2" key={"Cat2"} />
+        <CarbonSwitch name='Home' onClick={void 0} text='Home' key={'Home'} />
+        <CarbonSwitch name='Category1' onClick={void 0} text='Category 1' key={'Cat1'} />
+        <CarbonSwitch name='Category2' onClick={void 0} text='Category 2' key={'Cat2'} />
       </ContentSwitcher>
       <Headline />
 
-      <div className="bx--grid bx--grid--full-width home-cards">
-        <div className="bx--row landing-page__r2">
-          <div className="bx--col bx--no-gutter"></div>
+      <div className='bx--grid bx--grid--full-width home-cards'>
+        <div className='bx--row landing-page__r2'>
+          <div className='bx--col bx--no-gutter'></div>
         </div>
-        <div className="bx--row landing-page__r3">
-          {loading ? (
-            <p>Loading..</p>
-          ) : (
-            data.documents &&
-            data.documents.map((article, index) => {
-
-
-              const details = article.document;
-              return (
-                <div className="bx--col-md-12 bx--col-lg-12" key={index}>
-                  <Card
-                    id={details.id}
-                    title={details.name}
-                    text={`${details.elements.articleText.value.substr(0, 50) + "..."}`}
-                    tags={details.tags}
-                    thumbnail={`https://my12.digitalexperience.ibm.com/${details.elements.thumbnail.value.leadImage.url}`}
-                  />
-                </div>
-              );
-            })
-          )}
-        </div>
+        <div className='bx--row landing-page__r3'>{articles}</div>
       </div>
     </div>
   );

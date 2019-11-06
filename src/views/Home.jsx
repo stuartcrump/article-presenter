@@ -1,78 +1,68 @@
-import React, { useState, useEffect } from "react";
-import Headline from "../components/Headline/Headline";
-import Card from "../components/Card/Card";
-import "./Home.scss";
-import { getCategoryItems } from "../services/articles";
-import { ContentSwitcher, Switch as CarbonSwitch } from "carbon-components-react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Headline from '../components/Headline/Headline';
+import Card from '../components/Card/Card';
+import { Loading, ContentSwitcher, Switch as CarbonSwitch } from 'carbon-components-react';
+import _ from 'lodash';
+import { tenantURL } from '../constants';
+import axios from 'axios';
+import './Home.scss';
 
 function Home() {
-  const [data, setData] = useState({ documents: [] });
-  const [category, setCategory] = useState("Home");
-  const [loading, setLoadingState] = useState({ loading: false });
+  const [data, setData] = useState({});
+  const [category, setCategory] = useState('Home');
+  const [fetched, setFetched] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoadingState(true);
+      const deliveryURL = `${tenantURL}delivery/v1/search`;
+      const queryURL = `${deliveryURL}?q=*:*&fl=name,document,id,classification,type,status&
+        fq=classification:content&fq=categoryLeaves:"${category}"&fl=document:[json]`;
 
-      const result = await getCategoryItems(category);
-      const { data } = result;
-
-      setData(data);
-      setLoadingState(false);
+      axios
+        .get(queryURL)
+        .then(res => {
+          setData(res.data);
+          setFetched(true);
+        })
+        .catch(err => {
+          setError(err.message);
+          setFetched(true);
+        });
     };
     fetchData();
   }, [category]);
 
-  // let history = useHistory();
+  let articles;
+
+  if (fetched) {
+    articles = error ? (
+      <h2>{error}</h2>
+    ) : (
+      data.documents.map((article, index) => {
+        const { document } = article;
+        return (
+          <div className='bx--col-md-12 bx--col-lg-12' key={index}>
+            <Card
+              id={document.id}
+              title={document.name}
+              text={`${_.truncate(document.elements.articleText.value, { length: 150 })}`}
+              tags={document.tags}
+              thumbnail={`https://my12.digitalexperience.ibm.com/${document.elements.thumbnail.value.leadImage.url}`}
+            />
+          </div>
+        );
+      })
+    );
+  } else {
+    articles = <Loading description='Active loading indicator' small={false} withOverlay={false} />;
+  }
 
   return (
     <div>
-      <ContentSwitcher
-        onChange={function noRefCheck(e) {
-          setCategory(e.name);
-        }}
-        selectedIndex={0}
-      >
-        <CarbonSwitch
-          name="Home"
-          onClick={function() {
-            // history.replace("/");
-          }}
-          text="Home"
-          key={"Home"}
-        />
-
-        <CarbonSwitch name="Category1" onClick={void 0} text="Category 1" key={"Cat1"} />
-        <CarbonSwitch name="Category2" onClick={void 0} text="Category 2" key={"Cat2"} />
-      </ContentSwitcher>
       <Headline />
-
-      <div className="bx--grid bx--grid--full-width home-cards">
-        <div className="bx--row landing-page__r2">
-          <div className="bx--col bx--no-gutter"></div>
-        </div>
-        <div className="bx--row landing-page__r3">
-          {loading ? (
-            <p>Loading..</p>
-          ) : (
-            data.documents &&
-            data.documents.map((article, index) => {
-              const details = JSON.parse(article.document);
-              return (
-                <div className="bx--col-md-12 bx--col-lg-12" key={index}>
-                  <Card
-                    id={details.id}
-                    title={details.name}
-                    text={`${details.elements.articleText.value.substr(0, 50) + "..."}`}
-                    tags={details.tags}
-                    thumbnail={`https://my12.digitalexperience.ibm.com/${details.elements.thumbnail.value.leadImage.url}`}
-                  />
-                </div>
-              );
-            })
-          )}
-        </div>
+      <div className='bx--grid bx--grid--full-width home-cards'>
+        <div className='bx--row landing-page__r3'>{articles}</div>
       </div>
     </div>
   );
