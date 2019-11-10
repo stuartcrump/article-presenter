@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Headline from '../components/Headline/Headline';
 import Card from '../components/Card/Card';
-import './TagCategory.scss';
+import { Loading } from 'carbon-components-react';
 import _ from 'lodash';
 import { tenantURL } from '../constants';
 import axios from 'axios';
-import {
-  Loading
-} from 'carbon-components-react';
-function TagCategory(props) {
-  const [data, setData] = useState({
-    numFound: 0,
-    documents: []
-  });
+import './Category.scss';
+
+function Home(props) {
+  const [data, setData] = useState({});
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(props.match.params.id);
       const deliveryURL = `${tenantURL}delivery/v1/search`;
-      const queryURL = `${deliveryURL}?q=classification:content%20AND%20tags:"${props.match.params.id}"&fl=name&fl=classification&fl=tags&fl=document:[json]`;
+      const queryURL = `${deliveryURL}?q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=categoryLeaves:"${props.category}"&fl=document:[json]`;
 
       axios
         .get(queryURL)
@@ -34,15 +29,14 @@ function TagCategory(props) {
         });
     };
     fetchData();
-  }, []);
+  }, [props.category]);
 
   const renderArticles = () => {
     if (fetched) {
+      console.log(data);
       if (error) {
-        return <h1>{error}</h1>;
-      } else if (!data.numFound) {
-        return <h1>{'No article found with the given tag'}</h1>;
-      } else {
+        return <h2>{error}</h2>;
+      } else if (data.numFound > 0) {
         return data.documents.map((article, index) => {
           const { document } = article;
           return (
@@ -59,6 +53,8 @@ function TagCategory(props) {
             </div>
           );
         });
+      } else {
+        return <h2>{'No articles found'}</h2>;
       }
     } else {
       return (
@@ -70,15 +66,11 @@ function TagCategory(props) {
   return (
     <div>
       <Headline />
-
       <div className='bx--grid bx--grid--full-width home-cards'>
-        <div className='bx--row landing-page__r2'>
-          <div className='bx--col bx--no-gutter'></div>
-        </div>
         <div className='bx--row landing-page__r3'>{renderArticles()}</div>
       </div>
     </div>
   );
 }
 
-export default TagCategory;
+export default Home;
