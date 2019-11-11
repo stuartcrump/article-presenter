@@ -1,8 +1,6 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
-import TagComponent from '../Tag/Tag.jsx';
 import { Link } from 'react-router-dom';
-
 import './Card.scss';
 
 function Card(props) {

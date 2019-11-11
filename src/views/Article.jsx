@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Tile, Form, FormGroup, TextInput, Button, ToggleSmall, Loading } from 'carbon-components-react';
 import axios from 'axios';
 import _ from 'lodash';
-import { tenantURL } from '../constants';
+import { tenantURL, baseURL } from '../constants';
 import TagComponent from '../components/Tag/Tag';
 import './Article.scss';
 
 function Article() {
   const [article, setArticle] = useState({
     name: 'Default Name',
-    elements: {}
+    elements: {
+      articleImage: { value: { image: { url: '' } } },
+      articleText: { value: 'Default Text' }
+    },
+    tags: []
   });
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
@@ -42,7 +46,7 @@ function Article() {
           <div
             className='bx--row article-image'
             style={{
-              background: `url(https://my12.digitalexperience.ibm.com/${article.elements.articleImage.value.image.url}) no-repeat center center`,
+              background: `url(${baseURL}${article.elements.articleImage.value.image.url}) no-repeat center center`,
               backgroundSize: 'cover'
             }}
           ></div>

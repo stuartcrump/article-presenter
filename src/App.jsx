@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Category from './views/Category';
 import Article from './views/Article';
-import TagCategory from './views/TagCategory';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {
-  ContentSwitcher,
-  Switch as CarbonSwitch
-} from 'carbon-components-react';
+import Header from './components/Header/Header';
 import { tenantURL, taxonomy } from './constants';
 import './App.scss';
-import axios from 'axios';
-import { Loading } from 'carbon-components-react';
 
 function App() {
   const [categories, setCategories] = useState({
@@ -19,7 +14,6 @@ function App() {
   });
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
-  const [category, setCategory] = useState('Home');
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -39,54 +33,22 @@ function App() {
     fetchCategories();
   }, []);
 
-  const renderCategories = () => {
+  function RenderHeader() {
     if (fetched) {
-      return error
-        ? 'Error'
-        : categories.documents.map(category => {
-            return (
-              <CarbonSwitch
-                name={category.name}
-                text={category.name}
-                key={category.id}
-                onClick={void 0}
-              />
-            );
-          });
+      return error ? <h2>Network Error</h2> : <Header categories={categories.documents} />;
     } else {
-      return <Loading description='Loading' small={true} withOverlay={false} />;
+      return <Header categories={[]} />;
     }
-  };
+  }
 
   return (
     <Router>
-      <ContentSwitcher
-        onChange={function noRefCheck(event) {
-          setCategory(event.name);
-          console.log(event.name)
-        }}
-        selectedIndex={0}
-      >
-        {renderCategories()}
-      </ContentSwitcher>
-
+      <RenderHeader />
       <Switch>
-        <Route exact path='/'>
-        <Category category={category} />
-        </Route>
-        <Route path='/article/:id'>
-          <Article />
-        </Route>
-        <Route
-          exact
-          path='/category/:id'
-          render={props => <Category category={category} />}
-        ></Route>
-        <Route
-          exact
-          path='/tag/:id'
-          render={props => <TagCategory {...props} />}
-        ></Route>
+        <Route exact path='/' render={props => <Category {...props} />}></Route>
+        <Route path='/article/:id' render={() => <Article />}></Route>
+        <Route exact path='/category/:id' render={props => <Category {...props} />}></Route>
+        <Route exact path='/tag/:id' render={props => <Category {...props} />}></Route>
       </Switch>
     </Router>
   );
