@@ -11,11 +11,11 @@ import {
   HeaderSideNavItems
 } from 'carbon-components-react';
 
-function Header(props) {
-  const [menuActive, setMenuActive] = useState(false);
+function HeaderComponent({ categories }) {
+  const [menuState, setMenuState] = useState(false);
 
   function RenderMenuItems() {
-    return props.categories.map(category => {
+    return categories.map(category => {
       return (
         <HeaderMenuItem href={`/category/${category.name}`} key={category.id}>
           {category.name}
@@ -32,15 +32,15 @@ function Header(props) {
             <HeaderMenuButton
               aria-label='Menu State Handler'
               onClick={() => {
-                setMenuActive(!menuActive);
+                setMenuState(!menuState);
               }}
-              isActive={menuActive}
+              isActive={menuState}
             />
             <HeaderName href='/' prefix='Acoustic'>
               Workshop
             </HeaderName>
             <HeaderNavigation aria-label='Acoustic'>{RenderMenuItems()}</HeaderNavigation>
-            <SideNav aria-label='Side navigation' expanded={menuActive} isPersistent={false}>
+            <SideNav aria-label='Side navigation' expanded={menuState} isPersistent={false}>
               <SideNavItems>
                 <HeaderSideNavItems>{RenderMenuItems()}</HeaderSideNavItems>
               </SideNavItems>
@@ -52,4 +52,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default HeaderComponent;

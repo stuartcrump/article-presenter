@@ -1,17 +1,17 @@
-.App {
-  text-align: center;
+a {
+  text-decoration: none;
 }
 
-.bx--content-switcher-btn:first-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.bx--content-switcher-btn:last-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.landing-page__r3 a {
+  color: black;
 }
 
 .bx--tile {
+  padding: 0 1rem;
   background-color: #e6e6e6;
+}
+
+.bx--toggle__text--on,
+.bx--toggle__text--off {
+  width: 5rem;
 }

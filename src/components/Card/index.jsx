@@ -1,26 +1,26 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
 import { Link } from 'react-router-dom';
-import './Card.scss';
+import './style.scss';
 
-function Card(props) {
+function CardComponent({ id, thumbnail, text, title }) {
   return (
-    <Link to={`/article/${props.id}`}>
+    <Link to={`/article/${id}`}>
       <Tile className='card'>
         <div className='bx--row'>
           <div className='bx--col-sm-1 bx--col-lg-1 card-image-col'>
             <div
               className='card-image'
               style={{
-                background: `url(${props.thumbnail}) no-repeat center center / cover`
+                background: `url(${thumbnail}) no-repeat center center / cover`
               }}
             ></div>
           </div>
 
           <div className='bx--col-sm-3 bx--col-lg-11'>
-            <h4>{props.title}</h4>
+            <h4>{title}</h4>
 
-            <p dangerouslySetInnerHTML={{ __html: props.text }} className='card-text'></p>
+            <p dangerouslySetInnerHTML={{ __html: text }} className='card-text'></p>
           </div>
         </div>
       </Tile>
@@ -28,4 +28,4 @@ function Card(props) {
   );
 }
 
-export default Card;
+export default CardComponent;
