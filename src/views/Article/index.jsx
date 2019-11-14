@@ -34,7 +34,7 @@ function Article() {
           setFetched(true);
         });
     })();
-  }, []);
+  }, [fetched]);
 
   if (fetched) {
     const { name, elements, tags } = article;

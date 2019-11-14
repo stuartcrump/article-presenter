@@ -58,7 +58,7 @@ function Category({
             <CardComponent
               id={id}
               title={name}
-              text={`${elements.articleText.value.substring(0, 35)}`}
+              text={`${elements.articleText.value.substring(0, 55)}...`}
               thumbnail={`${baseURL}${elements.thumbnail.value.leadImage.url}`}
             />
           </div>

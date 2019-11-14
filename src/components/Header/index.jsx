@@ -10,15 +10,25 @@ import {
   SideNavItems,
   HeaderSideNavItems
 } from 'carbon-components-react';
+import { useHistory } from 'react-router-dom';
 
 function HeaderComponent({ categories }) {
   const [menuState, setMenuState] = useState(false);
+  let history = useHistory();
 
-  function RenderMenuItems() {
-    return categories.map(category => {
+  const handleMenuItemClick = (path, sideMenu) => {
+    history.push(`/category/${path}`);
+
+    if (sideMenu) {
+      setMenuState(!menuState);
+    }
+  };
+
+  function RenderMenuItems(sideMenu) {
+    return categories.map(({ id, name }) => {
       return (
-        <HeaderMenuItem href={`/category/${category.name}`} key={category.id}>
-          {category.name}
+        <HeaderMenuItem onClick={() => handleMenuItemClick(name, sideMenu)} key={id}>
+          {name}
         </HeaderMenuItem>
       );
     });
@@ -29,20 +39,16 @@ function HeaderComponent({ categories }) {
       render={() => (
         <>
           <CarbonHeader aria-label='Acoustic Header'>
-            <HeaderMenuButton
-              aria-label='Menu State Handler'
-              onClick={() => {
-                setMenuState(!menuState);
-              }}
-              isActive={menuState}
-            />
-            <HeaderName href='/' prefix='Acoustic'>
+            <HeaderMenuButton aria-label='Menu State Handler' onClick={() => setMenuState(!menuState)} isActive={menuState} />
+            <
+            // @ts-ignore
+            HeaderName prefix='Acoustic' onClick={() => history.push('/')}>
               Workshop
             </HeaderName>
-            <HeaderNavigation aria-label='Acoustic'>{RenderMenuItems()}</HeaderNavigation>
+            <HeaderNavigation aria-label='Acoustic'>{RenderMenuItems(false)}</HeaderNavigation>
             <SideNav aria-label='Side navigation' expanded={menuState} isPersistent={false}>
               <SideNavItems>
-                <HeaderSideNavItems>{RenderMenuItems()}</HeaderSideNavItems>
+                <HeaderSideNavItems>{RenderMenuItems(true)}</HeaderSideNavItems>
               </SideNavItems>
             </SideNav>
           </CarbonHeader>

@@ -2,6 +2,7 @@
   "name": "acoustic-example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/859f2008-a40a-4b92-afd0-24bb44d10124/",
   "dependencies": {
     "@carbon/grid": "^10.6.0",
     "carbon-components": "^10.7.3",
@@ -16,8 +17,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "prebuild": "rimraf ./wchtools/assets/acoustic-example/",
+    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/acoustic-example/",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "push": "wchtools push -v -w --dir ./wchtools"
   },
   "eslintConfig": {
     "extends": "react-app"

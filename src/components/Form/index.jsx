@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, TextInput, Button, ToggleSmall } from 'carbon-components-react';
+import './style.scss';
 
 function FormComponent({ name }) {
   const [isValidMail, setValidMail] = useState(false);
