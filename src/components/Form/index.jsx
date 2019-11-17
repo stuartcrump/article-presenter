@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, TextInput, Button, ToggleSmall } from 'carbon-components-react';
-import './style.scss';
 
 function FormComponent({ name }) {
   const [isValidMail, setValidMail] = useState(false);
@@ -22,7 +21,7 @@ function FormComponent({ name }) {
           method: 'POST',
           body: data,
           mode: 'no-cors'
-        }).then(res => console.log(res.body));
+        }).then(res => console.log(res));
       }
     } else {
       setValidMail(true);
@@ -32,7 +31,7 @@ function FormComponent({ name }) {
   return (
     <Form className='article-form-element' onSubmit={handleSubmit}>
       <FormGroup className='form-group' invalid={false} legendText='' message={false} messageText=''>
-        <div className='bx--row form-input-row'>
+        <div className='acoustic--row form-input-row'>
           <TextInput
             name='Forename'
             className='name-input'
@@ -48,7 +47,7 @@ function FormComponent({ name }) {
           />
         </div>
 
-        <div className='bx--row form-input-row'>
+        <div className='acoustic--row form-input-row'>
           <TextInput
             name='Email'
             className='email-input'
@@ -62,8 +61,8 @@ function FormComponent({ name }) {
           />
         </div>
 
-        <div className='bx--row form-input-row'>
-          <div className='bx--col-sm-2 consent-toggle-wrapper'>
+        <div className='acoustic--row form-input-row'>
+          <div className='acoustic--col-sm-2 consent-toggle-wrapper'>
             <ToggleSmall
               name='sp_exp'
               value='yes'
@@ -76,7 +75,7 @@ function FormComponent({ name }) {
               onToggle={function noRefCheck() {}}
             />
           </div>
-          <div className='bx--col-sm-2 signup-button-wrapper'>
+          <div className='acoustic--col-sm-2 signup-button-wrapper'>
             <Button className='signup-button' kind='primary' tabIndex={0} type='submit'>
               SIGN UP
             </Button>

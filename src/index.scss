@@ -1,1 +1,9 @@
+// $prefix: 'acoustic';
 @import '~carbon-components/scss/globals/scss/styles.scss';
+@import './styles/category.scss';
+@import './styles/form.scss';
+@import './styles/headline.scss';
+@import './styles/tag.scss';
+@import './styles/article.scss';
+@import './styles/card.scss';
+@import './styles/app.scss';

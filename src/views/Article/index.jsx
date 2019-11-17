@@ -3,7 +3,7 @@ import { Tile, Loading } from 'carbon-components-react';
 import { tenantURL, baseURL } from '../../constants';
 import TagComponent from '../../components/Tag/';
 import FormComponent from '../../components/Form/';
-import './style.scss';
+import { Observable } from 'rxjs';
 
 function Article() {
   const [article, setArticle] = useState({
@@ -18,22 +18,28 @@ function Article() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    (async () => {
-      const articleId = window.location.pathname.replace('/article/', '');
-      const deliveryURL = `${tenantURL}delivery/v1/content/${articleId}&fl=document:[json]`;
-      const result = await fetch(deliveryURL);
-
-      result
-        .json()
-        .then(result => {
-          setArticle(result);
-          setFetched(true);
+    const articleId = window.location.pathname.replace('/article/', '');
+    const deliveryURL = `${tenantURL}delivery/v1/content/${articleId}&fl=document:[json]`;
+    const data$ = Observable.create(observer => {
+      fetch(deliveryURL)
+        .then(response => response.json())
+        .then(data => {
+          observer.next(data);
+          observer.complete();
         })
-        .catch(err => {
-          setError(err.message);
-          setFetched(true);
-        });
-    })();
+        .catch(err => observer.error(err));
+    }).subscribe(
+      data => {
+        setArticle(data);
+        setFetched(true);
+      },
+      error => {
+        setError(error.message);
+        setFetched(true);
+      }
+    );
+
+    return () => data$.unsubscribe();
   }, [fetched]);
 
   if (fetched) {

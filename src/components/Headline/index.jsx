@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
 import { headlineBackground } from '../../constants';
-import './style.scss';
 
 function HeadlineComponent() {
   return (

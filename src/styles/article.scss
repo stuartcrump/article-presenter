@@ -1,0 +1,46 @@
+.article {
+    margin: 4rem 0;
+    padding: 0 1rem;
+  
+    &-image {
+      height: 15rem;
+      background-size: contain;
+    }
+  
+    &-heading {
+      padding: 1rem 0 1rem 0;
+    }
+  
+    &-form {
+      padding: 1rem;
+    }
+  
+    &-tags {
+      padding: 1rem;
+    }
+  
+    &-form-element {
+      width: 100%;
+    }
+  
+    .form-input-row {
+      margin: 1rem 0;
+    }
+  
+    .bx--toggle__switch {
+      width: 10rem;
+    }
+  
+    .bx--fieldset {
+      margin-bottom: 0;
+    }
+  
+    .signup-button-wrapper {
+      text-align: right;
+  
+      .signup-button {
+        padding: 0.1rem 1rem 0.1rem 1rem;
+      }
+    }
+  }
+  
