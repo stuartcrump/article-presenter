@@ -1,8 +1,8 @@
 {
-  "name": "ac-example",
+  "name": "article-presenter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://my12.digitalexperience.ibm.com/859f2008-a40a-4b92-afd0-24bb44d10124",
+  "homepage": "/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/article-presenter",
   "dependencies": {
     "@carbon/grid": "^10.6.0",
     "carbon-components": "^10.7.3",
@@ -18,8 +18,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "prebuild": "rimraf ./wchtools/assets/",
-    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/",
+    "prebuild": "rimraf ./wchtools/assets/article-presenter",
+    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/article-presenter",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "wchtools push -v -w --dir ./wchtools"

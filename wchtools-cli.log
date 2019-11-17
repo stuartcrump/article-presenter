@@ -155,3 +155,137 @@
 [2019-11-15T17:25:45.352] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
 [2019-11-15T17:25:45.367] [INFO] cli 4.2.26 - Push modified complete
 [2019-11-15T17:25:45.367] [INFO] cli 4.2.26 - No items pushed, nothing has been modified locally since the last successful push or pull command.  Use the -I option to ignore timestamps, if you want to push both modified and unmodified artifacts
+[2019-11-17T15:29:28.095] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:29:36.849] [INFO] cli 4.2.26 - Successfully authenticated user oren.aksakal@acoustic.co for API URL https://my12.digitalexperience.ibm.com/api/859f2008-a40a-4b92-afd0-24bb44d10124.
+[2019-11-17T15:29:36.852] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
+[2019-11-17T15:29:37.422] [INFO] cli 4.2.26 - Pushed asset with path /favicon.ico and id 9c9efdc8-c456-4699-86fa-5a588683868b
+[2019-11-17T15:29:37.442] [INFO] cli 4.2.26 - Pushed asset with path /index.html and id 70b5b64e-7e77-49f0-baf9-bf8f80363560
+[2019-11-17T15:29:37.462] [INFO] cli 4.2.26 - Pushed asset with path /asset-manifest.json and id 26f14914-bfba-4260-adf7-a73a0354959b
+[2019-11-17T15:29:37.560] [INFO] cli 4.2.26 - Pushed asset with path /logo192.png and id de349b60-1d43-4f65-b02a-3078efa5a588
+[2019-11-17T15:29:37.569] [INFO] cli 4.2.26 - Pushed asset with path /logo512.png and id 1b09c04b-069a-42a4-8e15-9f7827bada63
+[2019-11-17T15:29:37.927] [INFO] cli 4.2.26 - Pushed asset with path /precache-manifest.b0f53187addf8db2dcef5ecfdac07d3d.js and id ade34aff-2dd6-46d3-aee5-b68b12c3615e
+[2019-11-17T15:29:37.937] [INFO] cli 4.2.26 - Pushed asset with path /manifest.json and id d6b6d64a-97d2-4820-a974-399af9fc39b5
+[2019-11-17T15:29:38.018] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css and id 74c27c73-a116-4e40-946f-0d17d733c911
+[2019-11-17T15:29:38.085] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css.map and id 96784795-a6a8-442f-a1e5-bf66e26d72c1
+[2019-11-17T15:29:38.116] [INFO] cli 4.2.26 - Pushed asset with path /service-worker.js and id d2b2ce80-ebc1-4e7d-8139-7e260058393d
+[2019-11-17T15:29:38.510] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js and id 41718177-01ea-4370-b742-d44e2d50af97
+[2019-11-17T15:29:38.551] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.246fcad3.chunk.js and id d279d5cf-9247-4a81-b1c4-3a9257444dc5
+[2019-11-17T15:29:38.569] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js.map and id 914d723d-4b18-4d51-a4fc-1db9c2352cd8
+[2019-11-17T15:29:38.662] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.485abf8e.js and id 9de16258-8ce2-4087-b934-082aa9910d82
+[2019-11-17T15:29:39.020] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.485abf8e.js.map and id 4b1db830-8e1d-4448-ba10-f0e43749b96f
+[2019-11-17T15:29:39.091] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/favicon.ico and id f15bbeb9-4b68-415d-b2df-43a3d7502422
+[2019-11-17T15:29:39.502] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo192.png and id acdd1874-75d9-431a-8314-395c31c69558
+[2019-11-17T15:29:39.599] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo512.png and id 6af5ae83-1947-49af-8664-2cfe1503f532
+[2019-11-17T15:29:40.131] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/manifest.json and id fc7fceb6-63a6-462d-9483-a1966642ffca
+[2019-11-17T15:29:40.233] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/index.html and id 3c4950f4-990a-4b95-bf49-b25f9e96c919
+[2019-11-17T15:29:40.256] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.246fcad3.chunk.js.map and id 730709ca-28b0-430d-b2c2-4b09f4c03dc7
+[2019-11-17T15:29:40.320] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/asset-manifest.json and id 9c19c0b7-7708-460a-b793-6f538029ad58
+[2019-11-17T15:29:40.749] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/precache-manifest.8ee055033d1016490030f31d123234f5.js and id d1a8d686-5d7b-4ac0-a360-c38287622d7b
+[2019-11-17T15:29:40.878] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css and id d1f6ef60-ce78-4fe1-84bd-251430a712d8
+[2019-11-17T15:29:40.986] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css.map and id 837a8377-430a-4381-948d-6ab085b99ac9
+[2019-11-17T15:29:41.758] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.1a289d88.chunk.js and id c15375aa-0bc3-4c52-983c-eb787a9244d1
+[2019-11-17T15:29:42.059] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.0428cd34.chunk.js and id 69500c88-4154-4326-b52c-6b1973e01211
+[2019-11-17T15:29:42.168] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.0428cd34.chunk.js.map and id b7691f14-fd4f-49d6-84df-ba48e2ff1c85
+[2019-11-17T15:29:43.063] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/service-worker.js and id 098c7b2f-095c-4e4b-9c04-3714a125286f
+[2019-11-17T15:29:43.303] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.62258b85.js.map and id bbc8fefb-9035-4aaf-9ba7-dfea626c4e17
+[2019-11-17T15:29:43.400] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.62258b85.js and id 3d589d1b-2dec-47bd-82a9-d3cb9d424120
+[2019-11-17T15:29:43.586] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.1a289d88.chunk.js.map and id a98319c9-b570-4dd5-b666-3edc7eed264f
+[2019-11-17T15:29:43.746] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:29:43.746] [INFO] cli 4.2.26 - Push modified complete. Pushed 32 artifacts successfully.
+[2019-11-17T15:30:50.406] [INFO] cli 4.2.26 - Successfully authenticated user oren.aksakal@acoustic.co for API URL https://my4.digitalexperience.ibm.com/api/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b.
+[2019-11-17T15:30:50.410] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
+[2019-11-17T15:30:52.061] [INFO] cli 4.2.26 - Pushed asset with path /logo512.png and id c368c2b6-967e-453c-a648-40666b0ec53b
+[2019-11-17T15:30:52.105] [INFO] cli 4.2.26 - Pushed asset with path /logo192.png and id f7161aa1-21b5-46c9-871e-4cc512290406
+[2019-11-17T15:30:52.137] [INFO] cli 4.2.26 - Pushed asset with path /asset-manifest.json and id a5492353-8678-4d87-b87c-a8027ae508ce
+[2019-11-17T15:30:52.166] [INFO] cli 4.2.26 - Pushed asset with path /precache-manifest.b0f53187addf8db2dcef5ecfdac07d3d.js and id afcf1a78-7efc-433b-ae89-c6640d3c0725
+[2019-11-17T15:30:52.177] [INFO] cli 4.2.26 - Pushed asset with path /index.html and id f4321464-bd31-42fc-aafa-e122d17b5cd5
+[2019-11-17T15:30:53.238] [INFO] cli 4.2.26 - Pushed asset with path /manifest.json and id 9a5e31b1-a0c2-47a9-ab94-0526897438a4
+[2019-11-17T15:30:53.245] [INFO] cli 4.2.26 - Pushed asset with path /service-worker.js and id 1dfe63e5-9b5c-46bc-8938-8f4d1feb2a4e
+[2019-11-17T15:30:53.410] [INFO] cli 4.2.26 - Pushed asset with path /favicon.ico and id 3a7b50b4-88fb-4533-90f2-ff107e3567e8
+[2019-11-17T15:30:53.653] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css and id 6c7cfa24-4fbf-443d-9a3a-35cd806a67b8
+[2019-11-17T15:30:53.742] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css.map and id 05468ed9-9356-4ee9-b1ee-ac78a931c4e3
+[2019-11-17T15:30:54.327] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js and id 182f9351-651c-46ad-8776-185e8f1a0d73
+[2019-11-17T15:30:54.636] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.246fcad3.chunk.js and id 6838256c-6102-4c87-9315-896efdfde509
+[2019-11-17T15:30:54.706] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.246fcad3.chunk.js.map and id cbe93185-c9dd-4125-832a-52e8111a15e9
+[2019-11-17T15:30:55.310] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.485abf8e.js and id a35f4bfc-fefa-4175-9b95-99a72595505d
+[2019-11-17T15:30:55.606] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.485abf8e.js.map and id 0c638da6-bc9d-483d-b46b-dff4ffe18551
+[2019-11-17T15:30:55.660] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/index.html and id 33525e28-a6f4-4cd4-93b1-d00670083d59
+[2019-11-17T15:30:55.831] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/asset-manifest.json and id 99451341-0b1e-4ecb-833f-b685c4d89e68
+[2019-11-17T15:30:56.486] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/favicon.ico and id 9de56aea-b6a1-4f85-a72a-df6ca18f13e5
+[2019-11-17T15:30:56.551] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js.map and id 2f303475-669d-4cea-8b4d-e001c208fcc8
+[2019-11-17T15:30:56.642] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo192.png and id 6b3b18c6-cc77-4469-90d9-299161c993a8
+[2019-11-17T15:30:56.807] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/precache-manifest.8ee055033d1016490030f31d123234f5.js and id c5a769c0-be8a-4223-a850-4d65bd51e925
+[2019-11-17T15:30:57.015] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/manifest.json and id dd977aaa-ed32-4a76-902f-42384081667f
+[2019-11-17T15:30:57.333] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/service-worker.js and id 34383950-a2b9-48fb-8b66-cbe737c3eca1
+[2019-11-17T15:30:57.531] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo512.png and id 750266f3-a55d-428b-828e-ecb9ee0f56c0
+[2019-11-17T15:30:57.671] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css and id 0c532da4-9195-4d42-9d96-020313e8e27a
+[2019-11-17T15:30:58.309] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css.map and id 892a3302-cc61-494b-bd96-473f74fecec6
+[2019-11-17T15:30:58.328] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.1a289d88.chunk.js and id a11fbdd9-0b13-4845-9fdc-556d315eb538
+[2019-11-17T15:30:58.682] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.0428cd34.chunk.js.map and id 753236a6-7df1-4fdb-b857-ec1f096b6d02
+[2019-11-17T15:30:58.712] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.0428cd34.chunk.js and id 3cb5cd05-4ff9-4b6c-886c-90224a03af56
+[2019-11-17T15:30:59.507] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.62258b85.js and id f7277fac-596f-4086-9e2c-b9299eb3d0f6
+[2019-11-17T15:30:59.693] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.62258b85.js.map and id 154269f1-9a16-4108-b798-01b88dd671e2
+[2019-11-17T15:30:59.755] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.1a289d88.chunk.js.map and id 1ff6528c-46dd-4ae4-8d7e-e53c4cb665aa
+[2019-11-17T15:30:59.938] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:30:59.939] [INFO] cli 4.2.26 - Push modified complete. Pushed 32 artifacts successfully.
+[2019-11-17T15:36:22.000] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:39:28.882] [INFO] cli 4.2.26 - Successfully authenticated user oren.aksakal@acoustic.co for API URL https://my4.digitalexperience.ibm.com/api/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b.
+[2019-11-17T15:39:28.885] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
+[2019-11-17T15:39:29.429] [INFO] cli 4.2.26 - Pushed asset with path /logo512.png and id c368c2b6-967e-453c-a648-40666b0ec53b
+[2019-11-17T15:39:29.498] [INFO] cli 4.2.26 - Pushed asset with path /manifest.json and id 9a5e31b1-a0c2-47a9-ab94-0526897438a4
+[2019-11-17T15:39:29.564] [INFO] cli 4.2.26 - Pushed asset with path /favicon.ico and id 3a7b50b4-88fb-4533-90f2-ff107e3567e8
+[2019-11-17T15:39:29.921] [INFO] cli 4.2.26 - Pushed asset with path /logo192.png and id f7161aa1-21b5-46c9-871e-4cc512290406
+[2019-11-17T15:39:30.267] [INFO] cli 4.2.26 - Pushed asset with path /index.html and id 50198c7f-c8c5-4faf-9068-36a6b6191391
+[2019-11-17T15:39:30.313] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css and id 6c7cfa24-4fbf-443d-9a3a-35cd806a67b8
+[2019-11-17T15:39:30.511] [INFO] cli 4.2.26 - Pushed asset with path /asset-manifest.json and id 2c4032c8-6673-48c5-92c3-5ba870876362
+[2019-11-17T15:39:30.691] [INFO] cli 4.2.26 - Pushed asset with path /precache-manifest.bfe6977a441f694be92fa5661d7be594.js and id cc3b4fd4-e571-4b88-8bde-e0ed98c7f763
+[2019-11-17T15:39:30.693] [INFO] cli 4.2.26 - Pushed asset with path /static/css/main.cc6442de.chunk.css.map and id 05468ed9-9356-4ee9-b1ee-ac78a931c4e3
+[2019-11-17T15:39:30.817] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js and id 182f9351-651c-46ad-8776-185e8f1a0d73
+[2019-11-17T15:39:30.845] [INFO] cli 4.2.26 - Pushed asset with path /service-worker.js and id ed0d34e0-4b07-4a88-9d7f-a38dd3547eef
+[2019-11-17T15:39:31.591] [INFO] cli 4.2.26 - Pushed asset with path /static/js/2.1a289d88.chunk.js.map and id 2f303475-669d-4cea-8b4d-e001c208fcc8
+[2019-11-17T15:39:31.745] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.45df838d.js and id 15c4df25-4ec0-4813-89f5-33950a9a92e1
+[2019-11-17T15:39:31.746] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.391980ef.chunk.js and id ecf4c5a7-9d06-47fa-a3c8-3138b57aab11
+[2019-11-17T15:39:31.832] [INFO] cli 4.2.26 - Pushed asset with path /static/js/runtime-main.45df838d.js.map and id a112f783-f277-422a-990e-1363c05a95ec
+[2019-11-17T15:39:31.874] [INFO] cli 4.2.26 - Pushed asset with path /static/js/main.391980ef.chunk.js.map and id 975de06d-0ee2-408e-a699-89e5c2020a4f
+[2019-11-17T15:39:32.134] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/favicon.ico and id 9de56aea-b6a1-4f85-a72a-df6ca18f13e5
+[2019-11-17T15:39:32.218] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo192.png and id 6b3b18c6-cc77-4469-90d9-299161c993a8
+[2019-11-17T15:39:32.243] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/logo512.png and id 750266f3-a55d-428b-828e-ecb9ee0f56c0
+[2019-11-17T15:39:32.551] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/manifest.json and id dd977aaa-ed32-4a76-902f-42384081667f
+[2019-11-17T15:39:32.624] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/asset-manifest.json and id 53417b9b-0f22-4b25-8963-6a681a900c9c
+[2019-11-17T15:39:33.172] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/index.html and id 93bf27e3-9e9e-43cf-ba7a-3703c45b1eb1
+[2019-11-17T15:39:33.182] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/service-worker.js and id c05b4048-5c38-4e32-a1f9-e35c4b9a1631
+[2019-11-17T15:39:33.347] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/precache-manifest.dec8fd7a04fd18d1c06a7b7c67d1e098.js and id 9240f6f0-679c-4024-9758-053cf9f36c3a
+[2019-11-17T15:39:33.671] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.0af514bb.chunk.js and id f5376702-48bd-40e0-9ddf-c7b0eeebd5c0
+[2019-11-17T15:39:33.674] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.94f1e729.js and id 287a8318-664c-41f2-99ad-388562bb4841
+[2019-11-17T15:39:34.191] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css and id 0c532da4-9195-4d42-9d96-020313e8e27a
+[2019-11-17T15:39:34.457] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.6b4323d6.chunk.js and id 2f9132cf-4d14-459d-8cf9-9aee3205adb3
+[2019-11-17T15:39:34.606] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/runtime-main.94f1e729.js.map and id ef4ce658-8f3b-4f6e-adac-485efd0a5775
+[2019-11-17T15:39:34.791] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/css/main.cc6442de.chunk.css.map and id 892a3302-cc61-494b-bd96-473f74fecec6
+[2019-11-17T15:39:35.320] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/main.6b4323d6.chunk.js.map and id 3bd450b6-cf72-4ccb-8f03-5063147a344f
+[2019-11-17T15:39:36.121] [INFO] cli 4.2.26 - Pushed asset with path /acoustic-example/static/js/2.0af514bb.chunk.js.map and id d00a32a0-4a7a-4db0-9f82-538ef86b99d3
+[2019-11-17T15:39:36.292] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:39:36.292] [INFO] cli 4.2.26 - Push modified complete. Pushed 32 artifacts successfully.
+[2019-11-17T15:42:15.931] [INFO] cli 4.2.26 - Successfully authenticated user oren.aksakal@acoustic.co for API URL https://my4.digitalexperience.ibm.com/api/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b.
+[2019-11-17T15:42:15.935] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
+[2019-11-17T15:42:15.948] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:42:15.948] [INFO] cli 4.2.26 - No items pushed, nothing has been modified locally since the last successful push or pull command.  Use the -I option to ignore timestamps, if you want to push both modified and unmodified artifacts
+[2019-11-17T15:44:25.263] [INFO] cli 4.2.26 - Successfully authenticated user oren.aksakal@acoustic.co for API URL https://my4.digitalexperience.ibm.com/api/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b.
+[2019-11-17T15:44:25.267] [INFO] cli 4.2.26 - ========== Pushing web assets ===========
+[2019-11-17T15:44:26.328] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/index.html and id 6c0cb667-76b4-4cc4-be8c-367496b4257e
+[2019-11-17T15:44:26.383] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/logo512.png and id 5a30969c-41cb-4ccb-9260-39e3dcebe215
+[2019-11-17T15:44:26.388] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/favicon.ico and id 23d40a6b-3bb7-4715-8d4a-2ad776dc35a8
+[2019-11-17T15:44:26.401] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/asset-manifest.json and id fc46e6ec-8e2b-4d00-91a0-85146cd090ad
+[2019-11-17T15:44:26.542] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/logo192.png and id a2577f7b-094d-48c6-b82b-bd4e0c2cce6d
+[2019-11-17T15:44:27.183] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/manifest.json and id 4cc4cf5b-ba07-4a67-8f6d-5763f7c7bc6e
+[2019-11-17T15:44:27.477] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/service-worker.js and id c0e03501-3994-4cb8-97e7-07e269a3bc2f
+[2019-11-17T15:44:27.486] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/precache-manifest.f33e6e85548ade4213f3f0a8a37ee7be.js and id 4c80d55e-44f3-45b5-a85d-b5dd3d771273
+[2019-11-17T15:44:27.964] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/css/main.cc6442de.chunk.css and id 45bb8235-91eb-4690-887d-435220520531
+[2019-11-17T15:44:28.204] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/css/main.cc6442de.chunk.css.map and id 4ad65ee0-ea11-4105-b905-2e2b20b92d6e
+[2019-11-17T15:44:28.741] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/2.c79fccbd.chunk.js and id 74d1fc1f-9a9e-4b79-bcef-8ef7d3d9aea3
+[2019-11-17T15:44:28.993] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/main.c2c6abe9.chunk.js and id 96c7d116-6335-430f-9f4e-2c301a261ff7
+[2019-11-17T15:44:29.467] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/main.c2c6abe9.chunk.js.map and id e3a206f5-28c1-4f3f-bd84-3d785f3bbb9a
+[2019-11-17T15:44:29.652] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/runtime-main.5a475d99.js and id 3bcae7c0-f1a0-42bd-bbac-6f54a32ba796
+[2019-11-17T15:44:29.658] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/runtime-main.5a475d99.js.map and id af51604d-fc37-48c2-8415-17ae776fa882
+[2019-11-17T15:44:30.155] [INFO] cli 4.2.26 - Pushed asset with path /article-presenter/static/js/2.c79fccbd.chunk.js.map and id 9485b7a6-bee3-41fc-b2ca-a79891bc4eff
+[2019-11-17T15:44:30.343] [INFO] cli 4.2.26 - Push modified complete
+[2019-11-17T15:44:30.344] [INFO] cli 4.2.26 - Push modified complete. Pushed 16 artifacts successfully.
