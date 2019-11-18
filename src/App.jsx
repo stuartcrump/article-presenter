@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' render={props => <Category {...props} />}></Route>
-        <Route path='/article/:id' render={() => <Article />}></Route>
+        <Route exact path='/article/:id' render={() => <Article />}></Route>
         <Route exact path='/category/:id' render={props => <Category {...props} />}></Route>
         <Route exact path='/tag/:id' render={props => <Category {...props} />}></Route>
       </Switch>
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App;
-

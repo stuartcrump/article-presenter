@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Observable } from 'rxjs';
 import HeadlineComponent from '../../components/Headline/';
 import CardComponent from '../../components/Card/';
 import { Loading } from 'carbon-components-react';
-import { tenantURL, baseURL, asJSON } from '../../constants';
+import { apiUrl, resourceUrl, asJSON } from '../../constants';
+import rxFetch from '../../services';
 
 function Category({
   match: {
@@ -19,7 +19,7 @@ function Category({
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const deliveryURL = `${tenantURL}delivery/v1/search`;
+    const deliveryURL = `${apiUrl}delivery/v1/search`;
     let queryURL;
 
     if (path.startsWith('/tag')) {
@@ -28,15 +28,7 @@ function Category({
       queryURL = `${deliveryURL}?q=*:*&fl=name,document,id,type&fq=classification:content&fq=categoryLeaves:"${id || 'Home'}"${asJSON}`;
     }
 
-    const data$ = Observable.create(observer => {
-      fetch(queryURL)
-        .then(response => response.json())
-        .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
-    }).subscribe(
+    const articles$ = rxFetch(queryURL).subscribe(
       data => {
         setArticles(data);
         setFetched(true);
@@ -47,7 +39,7 @@ function Category({
       }
     );
 
-    return () => data$.unsubscribe();
+    return () => articles$.unsubscribe();
   }, [id, path]);
 
   const Article = ({ document: { id, name, elements } }) => {
@@ -57,7 +49,7 @@ function Category({
           id={id}
           title={name}
           text={`${elements.articleText.value.substring(0, 60)} ...`}
-          thumbnail={`${baseURL}${elements.thumbnail.value.leadImage.url}`}
+          thumbnail={`${resourceUrl}${elements.thumbnail.value.leadImage.url}`}
         />
       </div>
     );
@@ -79,7 +71,9 @@ function Category({
     <div className='category'>
       <HeadlineComponent />
       <div className='bx--grid bx--grid--full-width category-cards'>
-        <div className='bx--row landing-page__r3'>{fetched ? <Articles articles={articles} /> : <Loading description='Loading' />}</div>
+        <div className='bx--row landing-page__r3'>
+          {fetched ? <Articles articles={articles} /> : <Loading description='Loading' withOverlay={false} />}
+        </div>
       </div>
     </div>
   );

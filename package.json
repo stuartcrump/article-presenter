@@ -1,9 +1,10 @@
 {
-  "name": "article-presenter",
+  "name": "test-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/article-presenter",
+  "homepage": "/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/test-app",
   "dependencies": {
+    "@acoustic-content-sdk/utils": "^8.0.439",
     "@carbon/grid": "^10.6.0",
     "carbon-components": "^10.7.3",
     "carbon-components-react": "^7.7.3",
@@ -18,8 +19,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "prebuild": "rimraf ./wchtools/assets/article-presenter",
-    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/article-presenter",
+    "prebuild": "rimraf ./wchtools/assets/test-app",
+    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/test-app",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "wchtools push -v -w --dir ./wchtools"

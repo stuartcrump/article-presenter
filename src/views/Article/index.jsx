@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Tile, Loading } from 'carbon-components-react';
-import { tenantURL, baseURL } from '../../constants';
+import { apiUrl, resourceUrl } from '../../constants';
 import TagComponent from '../../components/Tag/';
 import FormComponent from '../../components/Form/';
-import { Observable } from 'rxjs';
+import rxFetch from '../../services';
 
 function Article() {
   const [article, setArticle] = useState({
@@ -19,28 +19,20 @@ function Article() {
 
   useEffect(() => {
     const articleId = window.location.pathname.replace('/article/', '');
-    const deliveryURL = `${tenantURL}delivery/v1/content/${articleId}&fl=document:[json]`;
-    const data$ = Observable.create(observer => {
-      fetch(deliveryURL)
-        .then(response => response.json())
-        .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
-    }).subscribe(
-      data => {
-        setArticle(data);
+    const deliveryURL = `${apiUrl}delivery/v1/content/${articleId}&fl=document:[json]`;
+    const article$ = rxFetch(deliveryURL).subscribe(
+      article => {
+        setArticle(article);
         setFetched(true);
       },
       error => {
-        setError(error.message);
+        setError(error);
         setFetched(true);
       }
     );
 
-    return () => data$.unsubscribe();
-  }, [fetched]);
+    return () => article$.unsubscribe();
+  }, []);
 
   if (fetched) {
     const { name, elements, tags } = article;
@@ -53,7 +45,7 @@ function Article() {
           <div
             className='bx--row article-image'
             style={{
-              background: `url(${baseURL}${elements.articleImage.value.image.url}) no-repeat center center`,
+              background: `url(${resourceUrl}${elements.articleImage.value.image.url}) no-repeat center center`,
               backgroundSize: 'cover'
             }}
           ></div>

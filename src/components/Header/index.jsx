@@ -12,7 +12,7 @@ import {
   HeaderSideNavItems
 } from 'carbon-components-react';
 import { useHistory } from 'react-router-dom';
-import { tenantURL, taxonomy } from '../../constants';
+import { apiUrl, taxonomy } from '../../constants';
 
 function HeaderComponent() {
   const [menuState, setMenuState] = useState(false);
@@ -25,7 +25,7 @@ function HeaderComponent() {
   let history = useHistory();
 
   useEffect(() => {
-    const categoriesURL = `${tenantURL}/delivery/v1/search?q=*:*&fl=id,name&fq=classification:(category)&fq=path:(%5C/${taxonomy}/*)`;
+    const categoriesURL = `${apiUrl}/delivery/v1/search?q=*:*&fl=id,name&fq=classification:(category)&fq=path:(%5C/${taxonomy}/*)`;
     const data$ = Observable.create(observer => {
       fetch(categoriesURL)
         .then(response => response.json())
@@ -33,14 +33,23 @@ function HeaderComponent() {
           observer.next(data);
           observer.complete();
         })
-        .catch(err => observer.error(err));
+        .catch(error => {
+          setError(error);
+          observer.error(error);
+        });
     }).subscribe(
       data => {
-        setCategories(data);
+        if (data.errors) {
+          setError(data.message);
+        } else {
+          setCategories(data);
+        }
+
         setFetched(true);
       },
       error => {
-        setError(error.message);
+        console.log('error', error);
+        setError(error);
         setFetched(true);
       }
     );
@@ -80,7 +89,7 @@ function HeaderComponent() {
             <HeaderMenuButton aria-label='Menu State Handler' onClick={() => setMenuState(!menuState)} isActive={menuState} />
             <HeaderName
               prefix='Acoustic'
-              onClick={e => {
+              onClick={() => {
                 history.push('/');
               }}
             >
