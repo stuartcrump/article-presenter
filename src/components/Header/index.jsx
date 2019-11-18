@@ -34,7 +34,7 @@ function HeaderComponent() {
           observer.complete();
         })
         .catch(error => {
-          setError(error);
+          setError(error.message);
           observer.error(error);
         });
     }).subscribe(
@@ -48,8 +48,7 @@ function HeaderComponent() {
         setFetched(true);
       },
       error => {
-        console.log('error', error);
-        setError(error);
+        setError(error.message);
         setFetched(true);
       }
     );

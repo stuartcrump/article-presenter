@@ -6,21 +6,21 @@ function FormComponent({ name }) {
   const [mail, setMail] = useState('');
 
   const handleSubmit = event => {
-    const excludedDomain = 'yahoo.uk';
-    const isExcluded = mail.includes(excludedDomain);
+    const includedDomains = ['google.com'];
+    const isIncluded = includedDomains.some(domain => mail.includes(domain));
     const data = new FormData(event.target);
     event.preventDefault();
 
     if (mail) {
-      setValidMail(isExcluded);
-      if (!isExcluded) {
+      setValidMail(isIncluded);
+      if (isIncluded) {
         // handle submission
         console.log('Form Submitted', data, event.target);
 
         fetch('http://www.pages00.net/orgformikebean/UBXTestSignUp/SignUp', {
           method: 'POST',
           body: data,
-          mode: 'no-cors'
+          mode: 'cors'
         }).then(res => console.log(res));
       }
     } else {

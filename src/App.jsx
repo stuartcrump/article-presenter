@@ -6,7 +6,7 @@ import Category from './views/Category/';
 
 function App() {
   return (
-    <Router>
+    <Router basename={window.location.pathname}>
       <Header />
       <Switch>
         <Route exact path='/' render={props => <Category {...props} />}></Route>

@@ -6,9 +6,19 @@ import { resourceUrl, asJSON, apiUrl, headlineContentType } from '../../constant
 
 function HeadlineComponent() {
   const [headline, setHeadline] = useState({
-    name: '',
-    title: '',
-    text: ''
+    headline: {
+      document: {
+        elements: {
+          image: {
+            value: {
+              image: { url: '#' }
+            }
+          },
+          text: 'text',
+          title: 'test'
+        }
+      }
+    }
   });
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
@@ -18,11 +28,11 @@ function HeadlineComponent() {
 
     const headline$ = rxFetch(queryURL).subscribe(
       data => {
-        setHeadline(data.documents[0]); // index handles which one to be shown
+        setHeadline(data);
         setFetched(true);
       },
       error => {
-        setError(error);
+        setError(error.message);
         setFetched(true);
       }
     );
@@ -30,33 +40,42 @@ function HeadlineComponent() {
     return () => headline$.unsubscribe();
   }, []);
 
-  function Headline({
-    headline: {
-      document: {
-        elements: {
-          image: {
-            value: {
-              image: { url }
+  function Headline() {
+    console.log(headline);
+
+    if (headline.errors) {
+      return <h2>{headline.errors[0].message}</h2>;
+    } else if (headline.numFound > 0) {
+      const {
+        headline: {
+          document: {
+            elements: {
+              image: {
+                value: {
+                  image: { url }
+                }
+              },
+              text,
+              title
             }
-          },
-          text,
-          title
+          }
         }
-      }
+      } = headline;
+      return (
+        <Tile
+          className='headline'
+          style={{
+            background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${resourceUrl}${url}) no-repeat center center`,
+            backgroundSize: 'cover'
+          }}
+        >
+          <h3>{title.value}</h3>
+          <p dangerouslySetInnerHTML={{ __html: text.value }}></p>
+        </Tile>
+      );
+    } else {
+      return <h2>{'No Headline found'}</h2>;
     }
-  }) {
-    return (
-      <Tile
-        className='headline'
-        style={{
-          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${resourceUrl}${url}) no-repeat center center`,
-          backgroundSize: 'cover'
-        }}
-      >
-        <h3>{title.value}</h3>
-        <p dangerouslySetInnerHTML={{ __html: text.value }}></p>
-      </Tile>
-    );
   }
 
   if (fetched) {

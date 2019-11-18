@@ -2,7 +2,7 @@
   "name": "test-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/test-app",
+  "homepage": "/02df85f2-b4e9-4699-90a2-5c322475b2df/test-app",
   "dependencies": {
     "@acoustic-content-sdk/utils": "^8.0.439",
     "@carbon/grid": "^10.6.0",

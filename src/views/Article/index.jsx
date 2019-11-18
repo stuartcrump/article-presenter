@@ -26,7 +26,7 @@ function Article() {
         setFetched(true);
       },
       error => {
-        setError(error);
+        setError(error.message);
         setFetched(true);
       }
     );
