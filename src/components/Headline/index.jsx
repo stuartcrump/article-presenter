@@ -5,30 +5,16 @@ import rxFetch from '../../services';
 import { resourceUrl, asJSON, apiUrl, headlineContentType } from '../../constants';
 
 function HeadlineComponent() {
-  const [headline, setHeadline] = useState({
-    headline: {
-      document: {
-        elements: {
-          image: {
-            value: {
-              image: { url: '#' }
-            }
-          },
-          text: 'text',
-          title: 'test'
-        }
-      }
-    }
-  });
+  const [headlines, setHeadlines] = useState({});
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const queryURL = `${apiUrl}delivery/v1/search?q=*:*&fl=name,document,id,classification,type,status&fq=type:(${headlineContentType})&fq=classification:content${asJSON}`;
+    const queryURL = `${apiUrl}delivery/v1/search?q=*:*&fl=name,document,id,classification,type&fq=type:(${headlineContentType})&fq=classification:content${asJSON}`;
 
     const headline$ = rxFetch(queryURL).subscribe(
       data => {
-        setHeadline(data);
+        setHeadlines(data);
         setFetched(true);
       },
       error => {
@@ -40,52 +26,34 @@ function HeadlineComponent() {
     return () => headline$.unsubscribe();
   }, []);
 
-  function Headline() {
-    console.log(headline);
-
-    if (headline.errors) {
-      return <h2>{headline.errors[0].message}</h2>;
-    } else if (headline.numFound > 0) {
-      const {
-        headline: {
-          document: {
-            elements: {
-              image: {
-                value: {
-                  image: { url }
-                }
-              },
-              text,
-              title
-            }
-          }
-        }
-      } = headline;
-      return (
-        <Tile
-          className='headline'
-          style={{
-            background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${resourceUrl}${url}) no-repeat center center`,
-            backgroundSize: 'cover'
-          }}
-        >
-          <h3>{title.value}</h3>
-          <p dangerouslySetInnerHTML={{ __html: text.value }}></p>
-        </Tile>
-      );
-    } else {
-      return <h2>{'No Headline found'}</h2>;
-    }
+  function Headline({ headline }) {
+    return (
+      <Tile
+        className='headline'
+        style={{
+          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${resourceUrl}${headline.image.value.image.url}) no-repeat center center`,
+          backgroundSize: 'cover'
+        }}
+      >
+        <h3>{headline.title.value}</h3>
+        <p dangerouslySetInnerHTML={{ __html: headline.text.value }}></p>
+      </Tile>
+    );
   }
 
   if (fetched) {
-    return error ? (
-      <h2>error</h2>
-    ) : (
-      <div className='bx--col-lg-16'>
-        <Headline headline={headline} />
-      </div>
-    );
+    if (error) {
+      return <h2>{error}</h2>;
+    } else if (headlines.numFound === 0) {
+      return <h2>{'No Headline found'}</h2>;
+    } else {
+      const headline = headlines.documents[0].document.elements;
+      return (
+        <div className='bx--col-lg-16'>
+          <Headline headline={headline} />
+        </div>
+      );
+    }
   } else {
     return <Loading description='Loading' withOverlay={false} />;
   }

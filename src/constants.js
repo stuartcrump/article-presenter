@@ -1,9 +1,10 @@
 import { wchGetHubInfoFromBaseURL } from '@acoustic-content-sdk/utils';
+
 const developmentHubInfo = {
-  apiUrl: { href: 'https://my4.digitalexperience.ibm.com/api/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/' },
+  apiUrl: { href: 'https://my10.digitalexperience.ibm.com/api/02df85f2-b4e9-4699-90a2-5c322475b2df/' },
   resourceUrl: {
-    href: 'https://my4.digitalexperience.ibm.com/ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/',
-    pathname: 'ab3cbc2c-b5e8-4b15-b68b-64fa31070f8b/'
+    href: 'https://my10.digitalexperience.ibm.com/02df85f2-b4e9-4699-90a2-5c322475b2df/',
+    pathname: '02df85f2-b4e9-4699-90a2-5c322475b2df/'
   }
 };
 
@@ -11,10 +12,14 @@ const hubInfo = process.env.NODE_ENV === 'development' ? developmentHubInfo : wc
 const apiUrl = hubInfo.apiUrl.href;
 const resourceUrl = hubInfo.resourceUrl.href;
 const pathName = hubInfo.resourceUrl.pathname;
-
+const appName = 'reactApp'; // Enter your app name. 
+const appPath = `${pathName}${appName}`;
 const taxonomy = `ForReactApp`; // Enter your taxonomy name.
 const headlineContentType = 'ReactAppHeadlines'; // Enter your Headline content type name.
 const asJSON = '&fl=document:[json]';
 
-console.info('hubinfo', hubInfo, process.env.NODE_ENV);
-export { apiUrl, resourceUrl, taxonomy, asJSON, headlineContentType, pathName };
+console.log('hubinfo: ', hubInfo);
+console.log('taxonomy: ', taxonomy);
+console.log('headline content type:', headlineContentType);
+
+export { apiUrl, resourceUrl, taxonomy, asJSON, headlineContentType, pathName, appPath };

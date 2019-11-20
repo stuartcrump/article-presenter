@@ -8,19 +8,18 @@ function FormComponent({ name }) {
   const handleSubmit = event => {
     const includedDomains = ['google.com'];
     const isIncluded = includedDomains.some(domain => mail.includes(domain));
-    const data = new FormData(event.target);
+
     event.preventDefault();
 
     if (mail) {
       setValidMail(isIncluded);
       if (isIncluded) {
+        const data = new FormData(event.target);
         // handle submission
         console.log('Form Submitted', data, event.target);
-
         fetch('http://www.pages00.net/orgformikebean/UBXTestSignUp/SignUp', {
           method: 'POST',
-          body: data,
-          mode: 'cors'
+          body: data
         }).then(res => console.log(res));
       }
     } else {
@@ -53,7 +52,7 @@ function FormComponent({ name }) {
             className='email-input'
             id='test2'
             invalid={isValidMail}
-            invalidText=''
+            invalidText='Please enter an valid email address.'
             labelText='Email'
             placeholder='Input your email address'
             type='email'

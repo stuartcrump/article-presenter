@@ -4,7 +4,7 @@ import { apiUrl, resourceUrl } from '../../constants';
 import TagComponent from '../../components/Tag/';
 import FormComponent from '../../components/Form/';
 import rxFetch from '../../services';
-
+import { useParams } from 'react-router-dom';
 function Article() {
   const [article, setArticle] = useState({
     name: 'Default Name',
@@ -16,10 +16,10 @@ function Article() {
   });
   const [fetched, setFetched] = useState(false);
   const [error, setError] = useState('');
+  const { id } = useParams();
 
   useEffect(() => {
-    const articleId = window.location.pathname.replace('/article/', '');
-    const deliveryURL = `${apiUrl}delivery/v1/content/${articleId}&fl=document:[json]`;
+    const deliveryURL = `${apiUrl}delivery/v1/content/${id}&fl=document:[json]`;
     const article$ = rxFetch(deliveryURL).subscribe(
       article => {
         setArticle(article);
@@ -32,7 +32,7 @@ function Article() {
     );
 
     return () => article$.unsubscribe();
-  }, []);
+  }, [id]);
 
   if (fetched) {
     const { name, elements, tags } = article;
