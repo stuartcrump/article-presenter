@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Header from './components/Header/';
-import Article from './views/Article/';
-import Category from './views/Category/';
-import { appPath } from './constants';
+import Header from './components/Header';
+import Article from './views/Article';
+import Category from './views/Category';
+import { appPath } from './utils/constants';
+import './App.scss';
 
 function App() {
   return (

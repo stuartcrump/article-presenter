@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import HeadlineComponent from '../../components/Headline/';
-import CardComponent from '../../components/Card/';
+import HeadlineComponent from '../components/Headline';
+import CardComponent from '../components/Card';
 import { Loading } from 'carbon-components-react';
-import { apiUrl, resourceUrl, asJSON } from '../../constants';
-import rxFetch from '../../services';
+import { apiUrl, resourceUrl, asJSON } from '../utils/constants';
+import rxFetch from '../utils/helpers';
+import './Category.scss';
 
 function Category({
   match: {
@@ -22,6 +23,8 @@ function Category({
     const deliveryURL = `${apiUrl}delivery/v1/search`;
     let queryURL;
 
+    setFetched(false);
+
     if (path.startsWith('/tag')) {
       queryURL = `${deliveryURL}?q=classification:content%20AND%20tags:"${id}"&fl=name&fl=classification&fl=tags${asJSON}`;
     } else {
@@ -29,14 +32,9 @@ function Category({
     }
 
     const articles$ = rxFetch(queryURL).subscribe(
-      data => {
-        setArticles(data);
-        setFetched(true);
-      },
-      error => {
-        setError(error.message);
-        setFetched(true);
-      }
+      result => setArticles(result),
+      error => setError(error.message),
+      () => setFetched(true)
     );
 
     return () => articles$.unsubscribe();

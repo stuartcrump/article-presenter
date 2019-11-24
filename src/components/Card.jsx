@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tile } from 'carbon-components-react';
 import { Link } from 'react-router-dom';
+import './Card.scss';
 
 function CardComponent({ id, thumbnail, text, title }) {
   return (

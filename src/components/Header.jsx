@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Observable } from 'rxjs';
 import {
   HeaderName,
   HeaderContainer,
@@ -12,48 +11,29 @@ import {
   HeaderSideNavItems
 } from 'carbon-components-react';
 import { useHistory } from 'react-router-dom';
-import { apiUrl, taxonomy } from '../../constants';
+import { apiUrl, taxonomy } from '../utils/constants';
+import rxFetch from '../utils/helpers';
+import './Header.scss';
 
 function HeaderComponent() {
   const [menuState, setMenuState] = useState(false);
-  const [error, setError] = useState('');
   const [fetched, setFetched] = useState(false);
   const [categories, setCategories] = useState({
+    error: false,
+    message: 'Error',
     numFound: 0,
     documents: []
   });
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     const categoriesURL = `${apiUrl}/delivery/v1/search?q=*:*&fl=id,name&fq=classification:(category)&fq=path:(%5C/${taxonomy}/*)`;
-    const data$ = Observable.create(observer => {
-      fetch(categoriesURL)
-        .then(response => response.json())
-        .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(error => {
-          setError(error.message);
-          observer.error(error);
-        });
-    }).subscribe(
-      data => {
-        if (data.errors) {
-          setError(data.message);
-        } else {
-          setCategories(data);
-        }
+    const categories$ = rxFetch(categoriesURL).subscribe({
+      next: response => setCategories(response),
+      complete: () => setFetched(true)
+    });
 
-        setFetched(true);
-      },
-      error => {
-        setError(error.message);
-        setFetched(true);
-      }
-    );
-
-    return () => data$.unsubscribe();
+    return () => categories$.unsubscribe();
   }, []);
 
   const handleNavClick = (path, sideNav) => {
@@ -65,16 +45,23 @@ function HeaderComponent() {
   };
 
   const renderMenuItems = sideMenu => {
+    const { documents, error, message, numFound } = categories;
+
     if (fetched) {
-      return error ? (
-        <h2>{error}</h2>
-      ) : (
-        categories.documents.map(({ id, name }) => (
-          <HeaderMenuItem onClick={() => handleNavClick(name, sideMenu)} key={id}>
-            {name}
-          </HeaderMenuItem>
-        ))
-      );
+      if (error) {
+        return <h2>{message}, couldn't get categories.</h2>;
+      } else if (numFound === 0) {
+        return <h2>No categories found.</h2>;
+      } else {
+        return (
+          documents &&
+          documents.map(({ id, name }) => (
+            <HeaderMenuItem onClick={() => handleNavClick(name, sideMenu)} key={id}>
+              {name}
+            </HeaderMenuItem>
+          ))
+        );
+      }
     } else {
       return <HeaderMenuItem>Loading</HeaderMenuItem>;
     }
@@ -86,14 +73,14 @@ function HeaderComponent() {
         <>
           <CarbonHeader aria-label='Acoustic Header'>
             <HeaderMenuButton aria-label='Menu State Handler' onClick={() => setMenuState(!menuState)} isActive={menuState} />
-            <HeaderName
-              prefix='Acoustic'
+            <div
+              className='logo-wrapper'
               onClick={() => {
                 history.push('/');
               }}
             >
-              Workshop
-            </HeaderName>
+              <HeaderName prefix='Acoustic'>Workshop</HeaderName>
+            </div>
             <HeaderNavigation aria-label='Acoustic'>{renderMenuItems(false)}</HeaderNavigation>
             <SideNav aria-label='Side navigation' expanded={menuState} isPersistent={false}>
               <SideNavItems>

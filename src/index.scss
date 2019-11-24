@@ -1,9 +1,29 @@
-// $prefix: 'acoustic';
-@import '~carbon-components/scss/globals/scss/styles.scss';
-@import './styles/category.scss';
-@import './styles/form.scss';
-@import './styles/headline.scss';
-@import './styles/tag.scss';
-@import './styles/article.scss';
-@import './styles/card.scss';
-@import './styles/app.scss';
+$css--font-face: true !default;
+$css--helpers: true !default;
+$css--body: true !default;
+$css--use-layer: true !default;
+$css--reset: true !default;
+$css--default-type: true !default;
+$css--plex: true !default;
+$css--use-experimental-grid: false !default;
+$css--use-experimental-grid-fallback: false !default;
+
+@import '~carbon-components/scss/globals/scss/feature-flags';
+@import '~carbon-components/scss/globals/scss/vars';
+@import '~carbon-components/scss/globals/scss/colors';
+@import '~carbon-components/scss/globals/scss/theme';
+@import '~carbon-components/scss/globals/scss/mixins';
+@import '~carbon-components/scss/globals/scss/layout';
+@import '~carbon-components/scss/globals/scss/layer';
+@import '~carbon-components/scss/globals/scss/spacing';
+@import '~carbon-components/scss/globals/scss/typography';
+@import '~carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/import-once/import-once';
+@import '~carbon-components/scss/globals/scss/css--reset';
+@import '~carbon-components/scss/globals/scss/css--font-face';
+@import '~carbon-components/scss/globals/scss/css--helpers';
+@import '~carbon-components/scss/globals/scss/css--body';
+@import '~carbon-components/scss/globals/grid/grid';
+
+$deprecations--entry: true;
+$deprecations--reasons: ();
+$deprecations--message: 'Deprecated code was found, this code will be removed before the next release of Carbon.';

@@ -1,5 +1,9 @@
 import { wchGetHubInfoFromBaseURL } from '@acoustic-content-sdk/utils';
 
+const appName = 'reactApp'; // Enter your app name. 
+const taxonomy = `ForReactApp`; // Enter your taxonomy name.
+const headlineContentType = 'ReactAppHeadlines'; // Enter your Headline content type name.
+
 const developmentHubInfo = {
   apiUrl: { href: 'https://my10.digitalexperience.ibm.com/api/02df85f2-b4e9-4699-90a2-5c322475b2df/' },
   resourceUrl: {
@@ -7,15 +11,11 @@ const developmentHubInfo = {
     pathname: '02df85f2-b4e9-4699-90a2-5c322475b2df/'
   }
 };
-
 const hubInfo = process.env.NODE_ENV === 'development' ? developmentHubInfo : wchGetHubInfoFromBaseURL(new URL(window.location.href));
 const apiUrl = hubInfo.apiUrl.href;
 const resourceUrl = hubInfo.resourceUrl.href;
 const pathName = hubInfo.resourceUrl.pathname;
-const appName = 'reactApp'; // Enter your app name. 
 const appPath = `${pathName}${appName}`;
-const taxonomy = `ForReactApp`; // Enter your taxonomy name.
-const headlineContentType = 'ReactAppHeadlines'; // Enter your Headline content type name.
 const asJSON = '&fl=document:[json]';
 
 console.log('hubinfo: ', hubInfo);
