@@ -26,11 +26,11 @@ function FormComponent({ name }) {
   };
 
   return (
-    <Form className='article-form-element' onSubmit={handleSubmit} action='http://www.pages00.net/orgformikebean/UBXTestSignUp/SignUp'>
+    <Form className='article-form-element' method="post" onSubmit={handleSubmit} action='http://www.pages00.net/orgforukcsps/REACTApp/REACTAppForm' >
       <FormGroup className='form-group' invalid={false} legendText='' message={false} messageText=''>
         <div className='acoustic--row form-input-row'>
           <TextInput
-            name='Forename'
+            name="Name"
             className='name-input'
             disabled={false}
             id='article-form-name'
@@ -65,7 +65,7 @@ function FormComponent({ name }) {
               value='yes'
               aria-label='Toggle'
               className='some-class'
-              defaultToggled={true}
+              defaultToggled={false}
               id='consent-toggle'
               labelA="I don't consent"
               labelB='I consent'
@@ -78,8 +78,8 @@ function FormComponent({ name }) {
             </Button>
           </div>
         </div>
-        <input type='hidden' name='formSourceName' value='StandardForm'></input>
-        <input type='hidden' name='article' value={name}></input>
+        <input type="hidden" name="formSourceName" value="StandardForm"></input>
+        <input type='hidden' name='Article' value={name}></input>
       </FormGroup>
     </Form>
   );
