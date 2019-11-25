@@ -74,7 +74,9 @@ function Article() {
             </div>
 
             <div className='bx--row article-tags'>
-              {tags.length && tags.map((tag, index) => <TagComponent title={tag} key={`${index}-${tag}`} />)}
+              {tags.map((tag, index) => (
+                <TagComponent title={tag} key={`${index}-${tag}`} />
+              ))}
             </div>
           </Tile>
         </div>

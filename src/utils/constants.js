@@ -1,6 +1,6 @@
 import { wchGetHubInfoFromBaseURL } from '@acoustic-content-sdk/utils';
 
-const appName = 'reactApp'; // Enter your app name. 
+const appName = 'acoustic-example'; // Enter your app name. 
 const taxonomy = `ForReactApp`; // Enter your taxonomy name.
 const headlineContentType = 'ReactAppHeadlines'; // Enter your Headline content type name.
 

@@ -1,8 +1,8 @@
 {
-  "name": "test-app",
+  "name": "acoustic-example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/02df85f2-b4e9-4699-90a2-5c322475b2df/test-app",
+  "homepage": "/02df85f2-b4e9-4699-90a2-5c322475b2df/acoustic-example",
   "dependencies": {
     "@acoustic-content-sdk/utils": "^8.0.439",
     "@carbon/grid": "^10.6.0",
@@ -24,8 +24,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "prebuild": "rimraf ./wchtools/assets/test-app",
-    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/test-app",
+    "prebuild": "rimraf ./wchtools/assets/acoustic-example",
+    "postbuild": "copyfiles -u 1 \"./build/**/*.*\" ./wchtools/assets/acoustic-example",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "wchtools push -v -w --dir ./wchtools"

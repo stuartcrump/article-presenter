@@ -1,20 +1,19 @@
+@import '~carbon-components/scss/components/loading/loading';
+
 a {
-    text-decoration: none;
-  }
-  
-  .landing-page__r3 a {
-    color: black;
-  }
-  
-  .bx--tile {
-    padding: 0 1rem;
-    background-color: #e6e6e6;
-  }
-  
-  .bx--toggle__text--on,
-  .bx--toggle__text--off {
-    width: 5rem;
-  }
-  
-  
-  
+  text-decoration: none;
+}
+
+.landing-page__r3 a {
+  color: black;
+}
+
+.bx--tile {
+  padding: 0 1rem;
+  background-color: #e6e6e6;
+}
+
+.bx--toggle__text--on,
+.bx--toggle__text--off {
+  width: 5rem;
+}

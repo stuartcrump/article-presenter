@@ -3,7 +3,7 @@ import { Form, FormGroup, TextInput, Button, ToggleSmall } from 'carbon-componen
 import './Form.scss';
 
 function FormComponent({ name }) {
-  const [isValidMail, setValidMail] = useState(false);
+  const [isInvalid, setInvalid] = useState(false);
   const [mail, setMail] = useState('');
 
   const handleSubmit = event => {
@@ -13,23 +13,20 @@ function FormComponent({ name }) {
     event.preventDefault();
 
     if (mail) {
-      setValidMail(isIncluded);
+      setInvalid(isIncluded);
+
       if (isIncluded) {
-        const data = new FormData(event.target);
-        // handle submission
-        console.log('Form Submitted', data, event.target);
-        fetch('http://www.pages00.net/orgformikebean/UBXTestSignUp/SignUp', {
-          method: 'POST',
-          body: data
-        }).then(res => console.log(res));
+        event.target.submit();
+      } else {
+        setInvalid(true);
       }
     } else {
-      setValidMail(true);
+      setInvalid(true);
     }
   };
 
   return (
-    <Form className='article-form-element' onSubmit={handleSubmit}>
+    <Form className='article-form-element' onSubmit={handleSubmit} action='http://www.pages00.net/orgformikebean/UBXTestSignUp/SignUp'>
       <FormGroup className='form-group' invalid={false} legendText='' message={false} messageText=''>
         <div className='acoustic--row form-input-row'>
           <TextInput
@@ -52,7 +49,7 @@ function FormComponent({ name }) {
             name='Email'
             className='email-input'
             id='test2'
-            invalid={isValidMail}
+            invalid={isInvalid}
             invalidText='Please enter an valid email address.'
             labelText='Email'
             placeholder='Input your email address'
@@ -81,7 +78,6 @@ function FormComponent({ name }) {
             </Button>
           </div>
         </div>
-        {/* Added for Campaign, supports the webform */}
         <input type='hidden' name='formSourceName' value='StandardForm'></input>
         <input type='hidden' name='article' value={name}></input>
       </FormGroup>
