@@ -5,6 +5,7 @@ import './Form.scss';
 function FormComponent({ name }) {
   const [isInvalid, setInvalid] = useState(false);
   const [mail, setMail] = useState('');
+  const [toggle, setToggle] = useState('no');
 
   const handleSubmit = event => {
     const includedDomains = ['google.com'];
@@ -13,9 +14,8 @@ function FormComponent({ name }) {
     event.preventDefault();
 
     if (mail) {
-      setInvalid(isIncluded);
-
       if (isIncluded) {
+        setInvalid(false);
         event.target.submit();
       } else {
         setInvalid(true);
@@ -26,11 +26,16 @@ function FormComponent({ name }) {
   };
 
   return (
-    <Form className='article-form-element' method="post" onSubmit={handleSubmit} action='http://www.pages00.net/orgforukcsps/REACTApp/REACTAppForm' >
+    <Form
+      className='article-form-element'
+      method='post'
+      onSubmit={handleSubmit}
+      action='http://www.pages00.net/orgforukcsps/REACTApp/REACTAppForm'
+    >
       <FormGroup className='form-group' invalid={false} legendText='' message={false} messageText=''>
         <div className='acoustic--row form-input-row'>
           <TextInput
-            name="Name"
+            name='Name'
             className='name-input'
             disabled={false}
             id='article-form-name'
@@ -62,14 +67,14 @@ function FormComponent({ name }) {
           <div className='acoustic--col-sm-2 consent-toggle-wrapper'>
             <ToggleSmall
               name='sp_exp'
-              value='yes'
+              value={toggle}
               aria-label='Toggle'
               className='some-class'
               defaultToggled={false}
               id='consent-toggle'
               labelA="I don't consent"
               labelB='I consent'
-              onToggle={function noRefCheck() {}}
+              onToggle={() => (toggle === 'no' ? setToggle('yes') : setToggle('no'))}
             />
           </div>
           <div className='acoustic--col-sm-2 signup-button-wrapper'>
@@ -78,7 +83,7 @@ function FormComponent({ name }) {
             </Button>
           </div>
         </div>
-        <input type="hidden" name="formSourceName" value="StandardForm"></input>
+        <input type='hidden' name='formSourceName' value='StandardForm'></input>
         <input type='hidden' name='Article' value={name}></input>
       </FormGroup>
     </Form>
