@@ -1,0 +1,21 @@
+{
+  "id": "test-type-layout-mapping",
+  "rev": "1-9d7b2871c7303b4fd91faacf74aad00f",
+  "name": "testTypeLayoutMapping",
+  "classification": "layout-mapping",
+  "type": {
+    "id": "4c3d1b74-c915-4c98-87c4-03b62ca32e57"
+  },
+  "mappings": [
+    {
+      "defaultLayout": {
+        "id": "test-type-layout"
+      },
+      "layouts": [
+        {
+          "id": "test-type-layout"
+        }
+      ]
+    }
+  ]
+}
