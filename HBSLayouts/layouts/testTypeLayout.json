@@ -1,0 +1,10 @@
+{
+  "id": "test-type-layout",
+  "rev": "5-320e8e7986a5716b4d007c3655cbbbdf",
+  "name": "testTypeLayout",
+  "classification": "layout",
+  "prerender": true,
+  "template": "/test-app/main.hbs",
+  "templateType": "handlebars",
+  "urlTemplate": "/{templateLocation}/{name}/index.html"
+}
