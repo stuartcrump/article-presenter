@@ -20,7 +20,7 @@ function CardComponent({ id, thumbnail, text, title }) {
           <div className='bx--col-sm-3 bx--col-lg-11'>
             <h4>{title}</h4>
 
-            <p dangerouslySetInnerHTML={{ __html: text }} className='card-text'></p>
+            <div dangerouslySetInnerHTML={{ __html: text }} className='card-text'></div>
           </div>
         </div>
       </Tile>

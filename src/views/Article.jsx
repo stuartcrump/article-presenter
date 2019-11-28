@@ -60,7 +60,7 @@ function Article() {
 
             <div className='bx--row article-heading'>
               <div className='bx--col-sm-3 bx--col-lg-3'>
-                <h2>{name}</h2>
+                <h2 id='reactArticle'>{name}</h2>
               </div>
             </div>
 

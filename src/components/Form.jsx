@@ -13,13 +13,9 @@ function FormComponent({ name }) {
 
     event.preventDefault();
 
-    if (mail) {
-      if (isIncluded) {
-        setInvalid(false);
-        event.target.submit();
-      } else {
-        setInvalid(true);
-      }
+    if (mail && isIncluded) {
+      setInvalid(false);
+      event.target.submit();
     } else {
       setInvalid(true);
     }
