@@ -15,7 +15,7 @@ function HeadlineComponent() {
   });
 
   useEffect(() => {
-    const queryURL = `${apiUrl}delivery/v1/search?q=*:*&fl=name,document,id,classification,type&fq=type:(${headlineContentType})&fq=classification:content${asJSON}`;
+    const queryURL = `${apiUrl}delivery/v1/search?q=*:*&fl=name,document,id,classification,type&fq=type:(${headlineContentType})&fq=&fq=classification:content AND tags:"Default"${asJSON}`;
 
     const headline$ = rxFetch(queryURL).subscribe({
       next: response => setHeadlines(response),

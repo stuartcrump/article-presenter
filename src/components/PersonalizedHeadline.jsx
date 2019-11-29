@@ -18,7 +18,7 @@ class PersonalizedHeadline extends Component {
   }
 
   componentDidMount() {
-    this.WRTP.onReady(() => {
+    this.WRTP && this.WRTP.onReady(() => {
       const { headline } = this.props;
       let contentId = this.WRTP.getContentId('WelcomeBannerZone');
 
