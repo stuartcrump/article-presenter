@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Loading } from 'carbon-components-react';
-import { Tile } from 'carbon-components-react';
 import rxFetch from '../utils/helpers';
-import { resourceUrl, asJSON, apiUrl, headlineContentType } from '../utils/constants';
+import { asJSON, apiUrl, headlineContentType } from '../utils/constants';
+import PersonalizedHeadline from './PersonalizedHeadline';
 import './Headline.scss';
 
 function HeadlineComponent() {
@@ -25,25 +25,6 @@ function HeadlineComponent() {
     return () => headline$.unsubscribe();
   }, []);
 
-  function Headline({ headline }) {
-    const image = headline && headline.image && headline.image.value && headline.image.value.image && headline.image.value.image.url;
-    const title = headline && headline.title && headline.title.value;
-    const text = headline && headline.text && headline.text.value;
-
-    return (
-      <Tile
-        className='headline'
-        style={{
-          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${resourceUrl}${image}) no-repeat center center`,
-          backgroundSize: 'cover'
-        }}
-      >
-        <h3>{title}</h3>
-        <p dangerouslySetInnerHTML={{ __html: text }}></p>
-      </Tile>
-    );
-  }
-
   if (fetched) {
     const { documents, numFound, error, message } = headlines;
 
@@ -55,7 +36,7 @@ function HeadlineComponent() {
       const { elements } = documents && documents[0] && documents[0].document;
       return (
         <div className='bx--col-lg-16'>
-          <Headline headline={elements} />
+          <PersonalizedHeadline headline={elements} />
         </div>
       );
     }

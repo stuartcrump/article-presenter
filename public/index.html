@@ -22,8 +22,85 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <!-- Tealeaf Script Here-->>
+    <!-- Tealeaf Script Here-->
     <title>Acoustic Workshop</title>
+
+    <script>
+      var ubxEvents = [],
+        searchKeyword = null;
+      var channelTenantId = 'CW-506774057-GRCFJ9RC';
+      window.gaEvents = {};
+    </script>
+
+    <!--UBX Prod-->
+    <script type="text/javascript" src="//commercelibs.ibm.com/common/ubxCapture.js"></script>
+    <script>
+      if (channelTenantId) ubxCapture.setTenantID('WRTP', channelTenantId);
+    </script>
+    <script type="text/javascript">
+      ubxCapture.setID('be7ec977-1165-41d0-91a5-8236c951e3c3');
+    </script>
+
+<script defer type="text/javascript">
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    (i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date());
+    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga"
+    );
+
+  ga("create", "UA-152398884-1", "auto");
+  ga("require", "ec");
+
+  var identifiersMapperArray = [], ubxInformation;
+  ga(function (tracker) {
+    var clientId = tracker.get('clientId');
+    identifiersMapperArray.push({ "name": "gaClientId", "value": clientId });
+  });
+  ga(function () {
+    var tracker = ga.getByName("t0");
+    var originalSendHitTask = tracker.get("sendHitTask");
+    tracker.set("sendHitTask", function (model) {
+      originalSendHitTask(model);
+      var payLoad = model.get("hitPayload");
+
+      var hitType = model.get("hitType");
+      if (hitType == "pageview" && searchKeyword !== null) {
+        var result = {};
+        payLoad.split("&").forEach(function (part) {
+          var item = part.split("=");
+          result[item[0]] = decodeURIComponent(item[1]);
+        });
+
+        var eveObj = google_ubx.mapToUBXEvent(result, google_ubx.googleToUBXPageViewEvent);
+        eveObj.attributes.push({ "name": "searchTerms", "value": searchKeyword, "type": "string" });
+        eveObj.attributes.push({ "name": "searchType", "value": "1", "type": "string" });
+
+        eveObj.identifiers = identifiersMapperArray;
+        eveObj.eventCode = "ibmsearchedSite";
+
+        ibm_ubx.sendEvent(eveObj, google_ubx.host, google_ubx.authKey, "GOOGLEANALYTICS");
+      } else {
+        google_ubx.sendEventFromPayload(payLoad, identifiersMapperArray);
+      }
+    });
+  });
+</script>
+
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -38,5 +115,132 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>
+      window.addEventListener('load', function () {
+        google_ubx.googleToUBXAddToCartEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXCartPurchaseEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXCartPurchaseItemEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXFormErrorEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXPageViewEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXProductRatingEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXProductReviewEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXProductViewEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXRemoveFromCartEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXVideoCompletedEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXVideoEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXVideoLaunchedEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXVideoPausedEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        google_ubx.googleToUBXVideoPlayedEvent.attributesMapper.push({ "googleName": "cd1", "ubxName": "channeltenantId", "type": "string" });
+        
+        ga('set', 'dimension1', channelTenantId);       
+        
+        ibm_ubx.registerCallback("WRTP", function (eventPayload) {
+          if (eventPayload) {
+            ubxEvents.push(eventPayload);
+          }
+        });
+      });
+    </script>
+    <script>
+      window.gaEvents = {
+        ibmproductView: function (pid, pname, pprice, brand, category, pquantity) {
+          console.log("Inside product view")
+          //ga('send', 'event', 'Ecommerce', 'ibmproductView', { 'nonInteraction': 1 });
+          ga("ec:addProduct", {
+            "id": pid,
+            "name": pname,
+            "price": pprice,
+            "brand": brand,
+            "category": category,
+            "variant": "red",
+            "quantity": pquantity
+          });
+          ga("ec:setAction", "detail");
+          //ga('set', 'dimension1', "abcd1234");
+          ga("send", "event", "detail view", "click", "productview");
+        },
+  
+        ibmcartAdd: function (pid, pname, pprice, pquantity, pcategory) {
+          ga('set', 'currencyCode', 'EUR');
+          ga("ec:addProduct", {
+            "id": pid,
+            "name": pname,
+            "price": pprice,
+            "brand": "any",
+            "category": pcategory,
+            "variant": "red",
+            // "dimension1": "M",
+            "quantity": pquantity
+          });
+          ga("ec:setAction", "add");
+          ga("send", "event", "detail view", "click", "addToCart");
+  
+        },
+  
+        ibmcartPurchase: function () {
+          ga('set', 'currencyCode', 'EUR');
+          ga('ec:addProduct', {
+            'id': 'P12345',
+            'name': 'Android Warhol T-Shirt',
+            'category': 'Apparel',
+            'brand': 'Google',
+            'variant': 'black',
+            'price': '29.20',
+            'coupon': 'APPARELSALE',
+            'quantity': 1
+          });
+  
+          ga('ec:setAction', 'purchase', {
+            'id': 'T12345',
+            'affiliation': 'Google Store - Online',
+            'revenue': '37.39',
+            'tax': '2.85',
+            'shipping': '5.34',
+            'coupon': 'SUMMER2013'
+          });
+          ga('send', 'event', 'Ecommerce', 'ibmcartPurchase', 'purchase');
+        },
+  
+        ibmcartPurchaseItem: function () {
+          ga("ec:addProduct", {
+            "id": "57b9d",
+            "name": "Kiosk T-Shirt",
+            "price": "55.00",
+            "brand": "Kiosk",
+            "category": "T-Shirts",
+            "variant": "red",
+            // "dimension1": "M",
+            "quantity": 1
+          });
+          ga("ec:setAction", "purchase");
+          ga("send", "event", "detail view", "click", "purchase");
+          ga('send', 'event', 'Ecommerce', 'ibmcartPurchaseItem', { 'nonInteraction': 1 });
+        },
+  
+        ibmelementFormError: function () {
+          ga('send', 'event', 'Ecommerce', 'ibmelementFormError', { 'nonInteraction': 1 });
+        },
+  
+        ibmpageView: function (pathname, title) {
+          ga('set', 'page', pathname); 
+          ga('set', 'title', title);
+          ga('send', 'pageview');
+        },
+  
+        ibmsearchedSite: function (searchKeyword) {
+          ga('send', 'pageview', '/search_results?q=' + searchKeyword);
+        },
+  
+        wroteReview: function () {
+          ga('send', 'event', 'Ecommerce', 'wroteReview', { nonInteraction: 1 });
+        },
+  
+        providedRating: function () {
+          ga('send', 'event', 'Ecommerce', 'providedRating', { nonInteraction: 1 });
+        },
+  
+      }
+    </script>
   </body>
 </html>
