@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "/02df85f2-b4e9-4699-90a2-5c322475b2df/acoustic-example",
   "dependencies": {
-    "@acoustic-content-sdk/utils": "^8.0.439",
+    "@ibm-wch-sdk/utils": "^7",
     "@carbon/grid": "^10.6.0",
     "carbon-components": "^10.7.3",
     "carbon-components-react": "^7.7.3",
