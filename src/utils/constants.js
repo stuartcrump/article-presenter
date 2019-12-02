@@ -1,4 +1,4 @@
-import { wchGetHubInfoFromBaseURL } from '@acoustic-content-sdk/utils';
+import { wchGetHubInfoFromBaseURL } from '@ibm-wch-sdk/utils';
 
 const appName = 'acoustic-example'; // Enter your app name. 
 const taxonomy = `ForReactApp`; // Enter your taxonomy name.
