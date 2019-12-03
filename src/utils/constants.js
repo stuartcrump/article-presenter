@@ -6,15 +6,15 @@ const headlineContentType = 'ReactAppHeadlines'; // Enter your Headline content 
 
 const developmentHubInfo = {
   apiUrl: { href: 'https://my10.digitalexperience.ibm.com/api/02df85f2-b4e9-4699-90a2-5c322475b2df/' },
-  resourceUrl: {
+  deliveryUrl: {
     href: 'https://my10.digitalexperience.ibm.com/02df85f2-b4e9-4699-90a2-5c322475b2df/',
     pathname: '02df85f2-b4e9-4699-90a2-5c322475b2df/'
   }
 };
 const hubInfo = process.env.NODE_ENV === 'development' ? developmentHubInfo : wchGetHubInfoFromBaseURL(new URL(window.location.href));
 const apiUrl = hubInfo.apiUrl.href;
-const resourceUrl = hubInfo.resourceUrl.href;
-const pathName = hubInfo.resourceUrl.pathname;
+const resourceUrl = hubInfo.deliveryUrl.href;
+const pathName = hubInfo.deliveryUrl.pathname;
 const appPath = `${pathName}${appName}`;
 const asJSON = '&fl=document:[json]';
 
