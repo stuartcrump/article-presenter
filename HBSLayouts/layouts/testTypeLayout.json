@@ -4,7 +4,7 @@
   "name": "testTypeLayout",
   "classification": "layout",
   "prerender": true,
-  "template": "/test-app/main.hbs",
+  "template": "/acoustic-example/main.hbs",
   "templateType": "handlebars",
   "urlTemplate": "/{templateLocation}/{name}/index.html"
 }
