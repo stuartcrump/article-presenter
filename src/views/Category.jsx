@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HeadlineComponent from '../components/Headline';
 import CardComponent from '../components/Card';
 import { Loading } from 'carbon-components-react';
-import { apiUrl, resourceUrl, asJSON } from '../utils/constants';
+import { apiUrl, resourceUrl, contentType, asJSON } from '../utils/constants';
 import rxFetch from '../utils/helpers';
 import './Category.scss';
 
@@ -28,7 +28,7 @@ function Category({
     if (path.startsWith('/tag')) {
       queryURL = `${deliveryURL}?q=classification:content%20AND%20tags:"${id}"&fl=name&fl=classification&fl=tags${asJSON}`;
     } else {
-      queryURL = `${deliveryURL}?q=*:*&fl=name,document,id,type&fq=classification:content&fq=categoryLeaves:"${id || 'Home'}"${asJSON}`;
+      queryURL = `${deliveryURL}?q=*:*&fl=name,document,id,type&fq=classification:content&fq=type:"${contentType}"&fq=categoryLeaves:"${id || 'Home'}"${asJSON}`;
     }
 
     const articles$ = rxFetch(queryURL).subscribe(
