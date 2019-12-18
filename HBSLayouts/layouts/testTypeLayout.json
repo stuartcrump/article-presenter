@@ -6,5 +6,5 @@
   "prerender": true,
   "template": "/acoustic-example/main.hbs",
   "templateType": "handlebars",
-  "urlTemplate": "/{templateLocation}/{name}/index.html"
+  "urlTemplate": "/{templateLocation}/index.html"
 }
